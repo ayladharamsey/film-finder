@@ -1,4 +1,4 @@
-export const favoritedMovie = (state = '', action) => {
+export const favoritedMovie = (state = [], action) => {
   switch (action.type) {
     case 'FAVE_MOVIE':
       return action.favorites
