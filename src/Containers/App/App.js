@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../actions/index'
+import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions/index';
 
-class App extends component {
+class App extends Component {
   
-  componentDidMount(){
-    const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
+  async componentDidMount({ setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves }) {
+    // const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
     try {
       this.props.isLoading(true);
       const films = await getMovies();
       this.props.isLoading(false); 
-      this.props.setMovies(films)
+      this.props.setMovies(films);
     } catch(error) {
       this.props.isLoading(false);
-      this.props.hasErrored(error.message)
+      this.props.hasErrored(error.message);
     }
   
     const addUser = async newUser => {
@@ -41,26 +42,27 @@ class App extends component {
         this.props.hasErrored(error.message)
     }
   }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+}
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
   }
+
 }
 
 export default App;

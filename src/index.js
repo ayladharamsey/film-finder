@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import App from './Containers/App/App';
+import { rootReducer } from './reducers/index'
 import { composeWithDevTools } from 'redux-devtools-extension';
-import App from './components/App';
-import App from './App';
 
 
 const store = createStore(
@@ -20,3 +19,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
