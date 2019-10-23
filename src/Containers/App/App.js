@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions/index';
+import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
 class App extends Component {
   
-  async componentDidMount({ setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves }) {
-    // const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
+  async componentDidMount() {
+    const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
     try {
       this.props.isLoading(true);
       const films = await getMovies();
