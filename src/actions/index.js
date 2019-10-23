@@ -24,6 +24,6 @@ export const hasErrored = error => ({
 });
 
 export const setFaves = favorites => ({
-  type: 'SET_FAVORITES',
+  type: 'SET_FAVES',
   favorites
 });
