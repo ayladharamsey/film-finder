@@ -16,9 +16,14 @@ export const setUser = user => ({
 export const isLoading = bool => ({
   type: 'IS_LOADING',
   bool
-})
+});
 
 export const hasErrored = error => ({
   type: 'HAS_ERRORED',
   error
-})
+});
+
+export const setFaves = favorites => ({
+  type: 'SET_FAVORITES',
+  favorites
+});
