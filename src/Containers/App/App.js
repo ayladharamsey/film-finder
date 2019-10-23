@@ -3,16 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored } from '../actions/index'
+import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../actions/index'
 
 class App extends component {
   
   componentDidMount(){
-    const { setMovies, faveMovie, setUser, isLoading, hasErrored } = this.props;
+    const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
     try {
       this.props.isLoading(true);
       const films = await getMovies();
       this.props.isLoading(false); 
+      this.props.setMovies(films)
     } catch(error) {
       this.props.isLoading(false);
       this.props.hasErrored(error.message)
@@ -22,6 +23,7 @@ class App extends component {
       try {
         await createNewUser(newUser);
         const users = await getFavorites(); 
+        this.props.setUser(users);
       } catch(error) {
         this.props.isLoading(false);
         this.props.hasErrored(error.message)
