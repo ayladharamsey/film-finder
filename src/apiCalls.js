@@ -2,8 +2,6 @@ const apiKey = '0f1d43bea84ed1843958538d348af0d5';
 const upcomingMovies = '/popular/';
 const imageUrl = 'https://image.tmdb.org/t/p/original';
 
-
-
 export const getMovies = async () => {
   const url = `https://api.themoviedb.org/3/movie${upcomingMovies}?api_key=${apiKey}`
   const response = await fetch(url);
@@ -19,7 +17,8 @@ export const getMovies = async () => {
         overview: overview,
         posterImage: `${imageUrl}${poster_path}`,
         title: title,
-        releaseDate: release_date
+        releaseDate: release_date,
+        favorite: false
     }
   })
   return await Promise.all(cleanedMovieData);
