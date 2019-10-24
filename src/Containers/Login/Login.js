@@ -30,7 +30,7 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-        <form>
+        <form class="login_form">
           <input
             name="email"
             value={email}
