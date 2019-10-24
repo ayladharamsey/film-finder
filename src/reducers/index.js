@@ -5,7 +5,7 @@ import { user } from './user';
 import { loading } from './loading'
 import { hasErrored } from './errorMsg'
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   movieData,
   favoritedMovie,
   user,
@@ -13,4 +13,3 @@ const rootReducer = combineReducers({
   hasErrored
 });
 
-export default rootReducer;
