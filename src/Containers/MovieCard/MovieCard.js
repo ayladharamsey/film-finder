@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './MovieCard.scss';
+import { faveMovie } from '../../actions/index' 
 
 const MovieCard = (props) => {
   const { 
@@ -20,9 +22,14 @@ const MovieCard = (props) => {
       <p>{overview}</p>
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
+      <button onClick={(event) => faveMovie(event.target.id)}>Favorite</button>
       <p>{isFavorited}</p>
     </article>
   )
 }
 
-export default MovieCard;
+export const mapDispatchToProps = (dispatch) => ({
+  faveMovie: (id) => dispatch(faveMovie(id))
+})
+
+export default connect(null, mapDispatchToProps)(MovieCard);
