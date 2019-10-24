@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 class App extends Component {
   
@@ -12,11 +13,11 @@ class App extends Component {
     try {
       this.props.isLoading(true);
       const films = await getMovies();
-      this.props.isLoading(false); 
       this.props.setMovies(films);
+      this.props.isLoading(false); 
     } catch({ message }) {
-      this.props.isLoading(false);
       this.props.hasErrored(message);
+      this.props.isLoading(false);
     }
   
     const addUser = async newUser => {
@@ -44,8 +45,10 @@ class App extends Component {
 }
   render() {
     return (
-      <div className="App">
-      </div>
+      <main>
+        <h1>Something Movie Related!</h1>
+        {this.props.loading ? null : <MoviesContainer movieData={this.props.movieData}/>}
+      </main>
     );
   }
 }
