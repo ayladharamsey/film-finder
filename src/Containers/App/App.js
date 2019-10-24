@@ -9,15 +9,15 @@ import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '
 class App extends Component {
   
   async componentDidMount() {
-    const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
+    // const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
     try {
       this.props.isLoading(true);
       const films = await getMovies();
       this.props.isLoading(false); 
       this.props.setMovies(films);
-    } catch(error) {
+    } catch({ message }) {
       this.props.isLoading(false);
-      this.props.hasErrored(error.message);
+      this.props.hasErrored(message);
     }
   
     const addUser = async newUser => {
@@ -62,7 +62,25 @@ class App extends Component {
       </div>
     );
   }
-
 }
 
-export default App;
+const mapStateToProps = state => ({
+  movieData: state.movieData,
+  favoritedMovie: state.favoritedMovie,
+  user: state.user,
+  loading: state.loading,
+  hasErrored: state.hasErrored  
+})
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    setMovies,
+    faveMovie,
+    setUser,
+    isLoading,
+    hasErrored,
+    setFaves
+  }, dispatch)
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
