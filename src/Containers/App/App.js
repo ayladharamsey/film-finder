@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
 import './App.scss';
+import Login from '../Login/Login';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import CreateUser from '../CreateUser/CreateUser';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import Login from '../Login/Login';
 
 class App extends Component {
   
@@ -45,15 +46,39 @@ class App extends Component {
   }
 }
   render() {
-    const { movieData, setUser } = this.props;
+    const { movieData, setUser, favoritedMovie } = this.props;
     return (
-      <main>
-        <div className="login_form">
-          <Login setUser={setUser} />
-        </div>
-        <h1>Something Movie Related!</h1>
-        {this.props.loading ? null : <MoviesContainer movieData={movieData}/>}
-      </main>
+      <Router>
+        <Switch>
+          <main>
+            <Route 
+            exact 
+            path="/"
+            render = {() => <MoviesContainer movieData={movieData}/>}
+            />
+            <Route 
+            exact 
+            path="/login"
+            render = {() => <Login setUser={setUser} />}
+            />
+            <Route 
+              exact 
+              path="/favorites"
+              render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+            />
+            <Route 
+            exact 
+            path="/create-user"
+            render = {() => <CreateUser />} // we will need to pass some props here 
+            />
+            <Route 
+            exact 
+            path="/movies"
+            render = {() => <MoviesContainer movieData={movieData}/>} //refactor this to access from store
+            />
+          </main>
+        </Switch>
+      </Router>
     );
   }
 }
