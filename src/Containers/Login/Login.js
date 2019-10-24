@@ -16,7 +16,7 @@ class Login extends Component {
 
   loginUser = e => {
     e.preventDefault();
-    this.props({ ...this.state, id: Date.now() });
+    this.props.setUser({ ...this.state, id: Date.now() });
     this.clearInputs();
   }
 
@@ -30,7 +30,6 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <header>
         <form>
           <input
             name="email"
@@ -48,7 +47,6 @@ class Login extends Component {
             Sign In
           </button>
         </form>
-      </header>
     )
   }
 }
