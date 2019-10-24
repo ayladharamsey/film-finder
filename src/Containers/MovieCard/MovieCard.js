@@ -15,21 +15,21 @@ const MovieCard = (props) => {
     isFavorited 
   } = props;
   return (
-    <article className="movie-card">
+    <article id={id} className="movie-card">
       <h1>{title}</h1>
       <p>{movieRating}</p>
       <p>{backgroundImage}</p>
       <p>{overview}</p>
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
-      <button onClick={(event) => faveMovie(event.target.id)}>Favorite</button>
+      <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button>
       <p>{isFavorited}</p>
     </article>
   )
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  faveMovie: (id) => dispatch(faveMovie(id))
+  faveMovie: (id) => dispatch (faveMovie(id))
 })
 
 export default connect(null, mapDispatchToProps)(MovieCard);
