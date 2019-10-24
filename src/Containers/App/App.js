@@ -13,11 +13,11 @@ class App extends Component {
     try {
       this.props.isLoading(true);
       const films = await getMovies();
-      this.props.isLoading(false); 
       this.props.setMovies(films);
+      this.props.isLoading(false); 
     } catch({ message }) {
-      this.props.isLoading(false);
       this.props.hasErrored(message);
+      this.props.isLoading(false);
     }
   
     const addUser = async newUser => {
@@ -44,10 +44,11 @@ class App extends Component {
   }
 }
   render() {
+    console.log("loading", this.props.loading)
     return (
       <main>
         <h1>Something Movie Related!</h1>
-        <MoviesContainer movieData={this.props.movieData}/>
+        {this.props.loading ? null : <MoviesContainer movieData={this.props.movieData}/>}
       </main>
     );
   }
