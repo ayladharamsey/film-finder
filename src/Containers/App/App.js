@@ -8,9 +8,6 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import Login from '../Login/Login';
-import CreateUser from '../CreateUser/CreateUser';
 
 class App extends Component {
   
@@ -86,10 +83,10 @@ class App extends Component {
             path="/movies/:id"
             render = {({ match }) => {
               const { id } = match.params;
-              const numberId = parseInt(id)
-              return (
-                //add the movieInfo component here 
-              )
+              const numberId = parseInt(id); 
+              // return (
+              //   //add the movieInfo component here 
+              // )
             }}
             />
           </main>
