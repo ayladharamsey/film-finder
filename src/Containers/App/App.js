@@ -62,9 +62,9 @@ class App extends Component {
             render = {() => <Login setUser={setUser} />}
             />
             <Route 
-              exact 
-              path="/favorites"
-              render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+            exact 
+            path="/favorites"
+            render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
             />
             <Route 
             exact 
@@ -75,6 +75,17 @@ class App extends Component {
             exact 
             path="/movies"
             render = {() => <MoviesContainer movieData={movieData}/>} //refactor this to access from store
+            />
+            <Route 
+            exact 
+            path="/movies/:id"
+            render = {({ match }) => {
+              const { id } = match.params;
+              const numberId = parseInt(id)
+              return (
+                //add the movieInfo component here 
+              )
+            }}
             />
           </main>
         </Switch>
