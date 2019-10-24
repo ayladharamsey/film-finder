@@ -5,11 +5,11 @@ import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 class App extends Component {
   
   async componentDidMount() {
-    // const { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } = this.props;
     try {
       this.props.isLoading(true);
       const films = await getMovies();
@@ -45,21 +45,10 @@ class App extends Component {
 }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <main>
+        <h1>Something Movie Related!</h1>
+        <MoviesContainer movieData={this.props.movieData}/>
+      </main>
     );
   }
 }
