@@ -6,7 +6,7 @@ class Login extends Component {
     super();
     this.state = {
       name: '',
-      email: '',
+      email: ''
     }
   }
 

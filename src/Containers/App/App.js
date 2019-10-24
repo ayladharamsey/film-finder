@@ -8,6 +8,9 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import Login from '../Login/Login';
+import CreateUser from '../CreateUser/CreateUser';
 
 class App extends Component {
   
@@ -21,8 +24,10 @@ class App extends Component {
       this.props.hasErrored(message);
       this.props.isLoading(false);
     }
+
+  }
   
-    const addUser = async newUser => {
+   addUser = async newUser => {
       try {
         await createNewUser(newUser);
         const users = await getFavorites(); 
@@ -33,7 +38,7 @@ class App extends Component {
       }
     }
     
-    const retrieveFavorites = async id => {
+    retrieveFavorites = async id => {
       try {
         this.props.isLoading(true);
         const faves = await getFavorites(id);
@@ -43,8 +48,8 @@ class App extends Component {
         this.props.isLoading(false);
         this.props.hasErrored(error.message);
     }
-  }
 }
+   
   render() {
     const { movieData, setUser, favoritedMovie } = this.props;
     return (
