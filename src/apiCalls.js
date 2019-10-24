@@ -10,15 +10,16 @@ export const getMovies = async () => {
   }
   const movies = await response.json();
   const cleanedMovieData = await movies.results.map(async (result) => {
-    const { adult, backdrop_path, overview, poster_path, title, release_date } = result;
+    const { id, adult, backdrop_path, overview, poster_path, title, release_date } = result;
     return {
+        id: id,
         movieRating: adult,
         backgroundImage: `${imageUrl}${backdrop_path}`,
         overview: overview,
         posterImage: `${imageUrl}${poster_path}`,
         title: title,
         releaseDate: release_date,
-        favorite: false
+        isFavorited: false
     }
   })
   return await Promise.all(cleanedMovieData);

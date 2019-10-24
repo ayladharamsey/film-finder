@@ -44,10 +44,11 @@ class App extends Component {
   }
 }
   render() {
+    const { movieData } = this.props;
     return (
       <main>
         <h1>Something Movie Related!</h1>
-        {this.props.loading ? null : <MoviesContainer movieData={this.props.movieData}/>}
+        {this.props.loading ? null : <MoviesContainer movieData={movieData}/>}
       </main>
     );
   }
