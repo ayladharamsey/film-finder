@@ -27,27 +27,28 @@ class App extends Component {
         this.props.setUser(users);
       } catch(error) {
         this.props.isLoading(false);
-        this.props.hasErrored(error.message)
+        this.props.hasErrored(error.message);
       }
     }
     
-    const retrieveFavorites = async faveMovie => {
+    const retrieveFavorites = async id => {
       try {
         this.props.isLoading(true);
-        const faves = await faveMovie();
+        const faves = await getFavorites(id);
         this.props.isLoading(false);
-        this.props.setFaves(faves)
+        this.props.setFaves(faves);
       } catch(error) {
         this.props.isLoading(false);
-        this.props.hasErrored(error.message)
+        this.props.hasErrored(error.message);
     }
   }
 }
   render() {
+    const { movieData } = this.props;
     return (
       <main>
         <h1>Something Movie Related!</h1>
-        {this.props.loading ? null : <MoviesContainer movieData={this.props.movieData}/>}
+        {this.props.loading ? null : <MoviesContainer movieData={movieData}/>}
       </main>
     );
   }
@@ -72,4 +73,4 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

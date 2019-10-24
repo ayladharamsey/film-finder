@@ -3,12 +3,19 @@ import MovieCard from '../MovieCard/MovieCard';
 import './MoviesContainer.scss';
 
 const MoviesContainer = ({ movieData }) => {
-  console.log(movieData.results);
 
-  const movies = movieData.results.map(result => {
+  const movies = movieData.map(prop => {
     return <MovieCard 
-      key={result.id}
-      title={result.original_title} />
+      key={prop.id}
+      id={prop.id} 
+      movieRating={prop.movieRating}
+      backgroundImage={prop.backgroundImage}
+      overview={prop.overview}
+      posterImage={prop.posterImage}
+      title={prop.title}
+      releaseDate={prop.releaseDate}
+      isFavorited={prop.isFavorited}
+      />
   })
   
 
