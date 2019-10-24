@@ -44,7 +44,6 @@ class App extends Component {
   }
 }
   render() {
-    console.log("loading", this.props.loading)
     return (
       <main>
         <h1>Something Movie Related!</h1>
