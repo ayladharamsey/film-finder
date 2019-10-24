@@ -22,7 +22,7 @@ const MoviesContainer = ({ movieData }) => {
   return (
     <section className="movies-container">
       <h1>
-        What is up?! This is Movies Container!!
+        This is Movies Container::
         {movies}
       </h1>
     </section>

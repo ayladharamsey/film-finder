@@ -11,7 +11,7 @@ const MovieCard = (props) => {
     title, 
     releaseDate, 
     isFavorited 
-  } = this.props;
+  } = props;
   return (
     <article className="movie-card">
       <h1>{title}</h1>
