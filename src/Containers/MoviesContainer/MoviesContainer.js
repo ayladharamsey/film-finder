@@ -13,12 +13,11 @@ const MoviesContainer = ({ movieData }) => {
   
 
   return (
-    <section className="movies-container">
-      <h1>
-        What is up?! This is Movies Container!!
-        {movies}
-      </h1>
-    </section>
+    <div className="scroll-wrapper">
+      <section className="movies-container">
+          {movies}
+      </section>
+    </div>
   )
 }
 
