@@ -45,11 +45,11 @@ class App extends Component {
   }
 }
   render() {
-    const { movieData } = this.props;
+    const { movieData, setUser } = this.props;
     return (
       <main>
         <div className="login_form">
-          <Login addUser={this.addUser} />
+          <Login setUser={setUser} />
         </div>
         <h1>Something Movie Related!</h1>
         {this.props.loading ? null : <MoviesContainer movieData={movieData}/>}
