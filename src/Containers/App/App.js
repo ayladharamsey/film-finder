@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
+import { setMovies, faveMovie, setUser, isLoading, hasErrored } from '../../actions';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Login from '../Login/Login';
 
@@ -72,8 +72,7 @@ const mapDispatchToProps = dispatch => (
     faveMovie,
     setUser,
     isLoading,
-    hasErrored,
-    setFaves
+    hasErrored
   }, dispatch)
 )
 

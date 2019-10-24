@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './MovieCard.scss';
-import { faveMovie } from '../../actions/index' 
+import { faveMovie } from '../../actions/index'
+import favorite from '../../images/favorite.svg'
+import unfavorite from '../../images/unfavorite.svg' 
 
 const MovieCard = (props) => {
   const { 
@@ -23,7 +25,7 @@ const MovieCard = (props) => {
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
       <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button>
-      <p>{isFavorited}</p>
+      {isFavorited ? <img src={favorite} alt="favorited" /> : <img src={unfavorite} alt="un favorited" />}
     </article>
   )
 }
