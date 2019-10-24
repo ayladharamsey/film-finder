@@ -24,8 +24,10 @@ const MovieCard = (props) => {
       <p>{overview}</p>
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
-      <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button>
-      {isFavorited ? <img src={favorite} alt="favorited" /> : <img src={unfavorite} alt="un favorited" />}
+      {/* <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button> */}
+      {isFavorited ? 
+        <img src={favorite} alt="favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/> : 
+        <img src={unfavorite} alt="un favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/>}
     </article>
   )
 }
