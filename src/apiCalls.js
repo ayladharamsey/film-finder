@@ -42,3 +42,18 @@ export const getFavorites = async (id) => {
 export const setFavorites = () => {
     
 }
+
+export const loginUser = async userInfo => { 
+  const options = {
+    method: 'Post',
+    body: JSON.stringify(userInfo), 
+    headers: {
+      'Content-Type' : 'appliction/json'
+    }
+  }
+  const response = await fetch(`http://localhost:3001/api/v1/login`, options)
+  if(!response.ok) {
+    throw new Error('There was an error getting your information!')
+  }
+
+}

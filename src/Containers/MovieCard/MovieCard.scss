@@ -1,0 +1,16 @@
+$style-border: 1px solid red; 
+
+.movie-card {
+  margin-left: 50px;
+  // border: $style-border; 
+  height: 50%; 
+  width: 150px; 
+  background-color: beige; 
+  padding: 15px; 
+  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+  border-radius: 7px;
+
+}
+
+
+

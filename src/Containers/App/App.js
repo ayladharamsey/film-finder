@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import Login from '../Login/Login';
 
 class App extends Component {
   
@@ -47,6 +48,9 @@ class App extends Component {
     const { movieData } = this.props;
     return (
       <main>
+        <div className="login_form">
+          <Login addUser={this.addUser} />
+        </div>
         <h1>Something Movie Related!</h1>
         {this.props.loading ? null : <MoviesContainer movieData={movieData}/>}
       </main>
