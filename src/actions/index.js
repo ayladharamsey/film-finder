@@ -3,9 +3,9 @@ export const setMovies = movies => ({
   movies
 })
 
-export const faveMovie = favorites => ({
+export const faveMovie = id => ({
   type: 'FAVE_MOVIE',
-  favorites
+  id
 });
 
 export const setUser = user => ({
@@ -21,9 +21,4 @@ export const isLoading = bool => ({
 export const hasErrored = error => ({
   type: 'HAS_ERRORED',
   error
-});
-
-export const setFaves = favorites => ({
-  type: 'SET_FAVES',
-  favorites
 });

@@ -110,8 +110,7 @@ const mapDispatchToProps = dispatch => (
     faveMovie,
     setUser,
     isLoading,
-    hasErrored,
-    setFaves
+    hasErrored
   }, dispatch)
 )
 
