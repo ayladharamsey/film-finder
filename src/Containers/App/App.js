@@ -14,7 +14,7 @@ import { loginUserCheck } from '../../apiCalls';
 
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
-class App extends Component {
+export class App extends Component {
   
   async componentDidMount() {
     try {
@@ -26,7 +26,6 @@ class App extends Component {
       this.props.hasErrored(message);
       this.props.isLoading(false);
     }
-
   }
   
    addUser = async newUser => {
@@ -60,20 +59,20 @@ class App extends Component {
       }
     }
     
-    retrieveFavorites = async id => {
-      try {
-        this.props.isLoading(true);
-        const faves = await getFavorites(id);
-        this.props.isLoading(false);
-        this.props.setFaves(faves);
-      } catch(error) {
-        this.props.isLoading(false);
-        this.props.hasErrored(error.message);
+  retrieveFavorites = async id => {
+    try {
+      this.props.isLoading(true);
+      const faves = await getFavorites(id);
+      this.props.isLoading(false);
+      this.props.setFaves(faves);
+    } catch(error) {
+      this.props.isLoading(false);
+      this.props.hasErrored(error.message);
     }
-}
+  }
    
   render() {
-    const { movieData, setUser, favoritedMovie } = this.props;
+    const { movieData, setUser } = this.props;
     return (
         <Switch>
           <main>
@@ -91,6 +90,10 @@ class App extends Component {
             exact 
             path="/"
             render = {() => <MoviesContainer movieData={movieData}/>}
+            path="/favorites"
+            render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+
+            // MS - movieData also contains the favorited movies, can we just filter for the favorites?  have written example above
             />
             <Route 
             exact 
@@ -119,15 +122,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movieData: state.movieData,
-  favoritedMovie: state.favoritedMovie,
   user: state.user,
   loading: state.loading,
   hasErrored: state.hasErrored  
 })
 
-const mapDispatchToProps = dispatch => (
+export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     setMovies,
     faveMovie,

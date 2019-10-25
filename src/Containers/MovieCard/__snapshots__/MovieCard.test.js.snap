@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard container tests MovieCard should match its snapshot 1`] = `ShallowWrapper {}`;

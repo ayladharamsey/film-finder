@@ -5,7 +5,7 @@ import { faveMovie } from '../../actions/index'
 import favorite from '../../images/favorite.svg'
 import unfavorite from '../../images/unfavorite.svg' 
 
-const MovieCard = (props) => {
+export const MovieCard = (props) => {
   const { 
     id, 
     movieRating, 
