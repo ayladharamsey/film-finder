@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './Containers/App/App';
 import { rootReducer } from './reducers/index'
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { BrowserRouter as Router} from 'react-router-dom'
 
 
 const store = createStore(
@@ -12,11 +13,12 @@ const store = createStore(
   composeWithDevTools()
 )
 
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+const router = (
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>
+)
+ReactDOM.render(router, document.getElementById('root'));
 
