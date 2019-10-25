@@ -1,3 +1,5 @@
+/* eslint-disable import/first */
+
 import './App.scss';
 import Login from '../Login/Login';
 import { connect } from 'react-redux';
@@ -7,6 +9,9 @@ import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
+
+import { loginUserCheck } from '../../apiCalls';
+
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
 class App extends Component {
@@ -26,12 +31,32 @@ class App extends Component {
   
    addUser = async newUser => {
       try {
-        await createNewUser(newUser);
-        const users = await getFavorites(); 
-        this.props.setUser(users);
+        const response = await createNewUser(newUser); 
+        this.props.setUser({
+          id: response.id,
+          name: response.name,
+          email: response.email, 
+          password: response.passoword
+        });
       } catch(error) {
         this.props.isLoading(false);
         this.props.hasErrored(error.message);
+      }
+    }
+
+    loginUser = async user => {
+      try {
+       const response = await loginUserCheck(user);
+       if(response.id) {
+         this.props.setUser({
+           name: response.name,
+           id: response.id
+         })
+       }
+
+      }
+      catch({message}){
+      this.props.hasErrored(message);
       }
     }
     
@@ -50,9 +75,18 @@ class App extends Component {
   render() {
     const { movieData, setUser, favoritedMovie } = this.props;
     return (
-      <Router>
         <Switch>
           <main>
+            <Route 
+            exact 
+            path="/"
+            render = {() => <CreateUser addUser={this.addUser} />}  
+            />
+            <Route 
+            exact 
+            path="/"
+            render = {() => <Login loginUser={this.loginUser} />}
+            />
             <Route 
             exact 
             path="/"
@@ -60,18 +94,8 @@ class App extends Component {
             />
             <Route 
             exact 
-            path="/login"
-            render = {() => <Login setUser={setUser} />}
-            />
-            <Route 
-            exact 
             path="/favorites"
             render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
-            />
-            <Route 
-            exact 
-            path="/create-user"
-            render = {() => <CreateUser />} // we will need to pass some props here 
             />
             <Route 
             exact 
@@ -91,7 +115,6 @@ class App extends Component {
             />
           </main>
         </Switch>
-      </Router>
     );
   }
 }
