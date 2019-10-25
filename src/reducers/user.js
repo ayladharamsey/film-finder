@@ -7,14 +7,3 @@ export const user = (state = {}, action) => {
       return state
   }
 }
-
-
-// case 'CREATE_USER':
-//   return {
-//   name: action.name,
-//   email: action.email,
-//   password: action.password
-// }
-    
-//     default:
-// return state;

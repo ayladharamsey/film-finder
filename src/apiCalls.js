@@ -69,3 +69,4 @@ export const createNewUser = async (userInfo) => {
   const data = await response.json();
   return data;
 }
+
