@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import { setUser } from '../../actions'
+import { connect } from 'react-redux'
+import { user } from '../../reducers/user';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: ''
+      email: '',
+      password: '', 
     }
   }
 
@@ -14,9 +17,12 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  loginUser = e => {
+  handleClick = e => {
     e.preventDefault();
-    this.props.setUser({ ...this.state, id: Date.now() });
+    this.props.loginUser({
+      email: this.state.email,
+      password: this.state.password
+    })
     this.clearInputs();
   }
 
@@ -30,7 +36,7 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-        <form class="login_form">
+        <form className="login_form">
           <input
             name="email"
             value={email}
@@ -43,7 +49,7 @@ class Login extends Component {
             placeholder="Password"
             onChange={this.updateUser}
           />
-          <button onClick={this.loginUser}>
+          <button onClick={this.handleClick}>
             Sign In
           </button>
         </form>
@@ -51,4 +57,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(setUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(Login);
