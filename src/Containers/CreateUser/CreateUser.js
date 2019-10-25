@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Create.scss';
+import { connect } from 'react-redux';
+import { setUser } from '../../actions'
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 class CreateUser extends Component { 
@@ -18,8 +20,11 @@ class CreateUser extends Component {
   
     handleForm = e => { 
       e.preventDefault(); 
-      this.props.addUser({...this.state,
-      id: Date.now()});
+      this.props.addUser({
+        name: this.state.name, 
+        email: this.state.email, 
+        password: this.state.password
+      })
       this.clearInputs();
     }
 
@@ -60,4 +65,8 @@ class CreateUser extends Component {
 
 }
 
-export default CreateUser; 
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(setUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(CreateUser);
