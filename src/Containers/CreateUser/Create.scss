@@ -15,7 +15,7 @@ $shadow-hover: #e8e8e8 - 10;
 
 .title {
   width:30%;
-  // border: 1px solid $background-color;
+  justify-content: center; 
   background-color: $background-color;
   color: $button-color;
   font-family: 'Source Sans Pro', sans-serif; 
@@ -27,6 +27,9 @@ h1 {
 }
 
 .sign_in-btn {
+  font-family: 'Source Sans Pro', sans-serif; 
+  background: $background-color;
+  color: $text-color;
   width:20%;
   position: absolute;
   top: 14px;
@@ -34,6 +37,7 @@ h1 {
   padding: $paddingInterior;
   box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
     &:hover {
+      color: $background-color;
       background-color: $button-color - 10;
       box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
     }
