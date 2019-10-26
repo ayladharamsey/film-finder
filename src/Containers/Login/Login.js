@@ -3,7 +3,7 @@ import './Login.scss';
 import { setUser } from '../../actions'
 import { connect } from 'react-redux'
 import { user } from '../../reducers/user';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -19,7 +19,6 @@ class Login extends Component {
   }
 
   handleClick = e => {
-    console.log("this.props", this.props)
     e.preventDefault();
     this.props.loginUser({
       email: this.state.email,
@@ -51,9 +50,11 @@ class Login extends Component {
             placeholder="Password"
             onChange={this.updateUser}
           />
-          <button onClick={this.handleClick}>
-            Sign In
-          </button>
+          <Link to='/movies'>
+            <button onClick={this.handleClick}>
+              Sign In
+            </button>
+          </Link>
           <Link to='/create-user'><h5>Not a user? Create a new user account!</h5></Link>
         </form>
     )

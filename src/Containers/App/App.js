@@ -95,10 +95,10 @@ export class App extends Component {
             render = {() => {
               return (
                 <>
-                 <Nav></Nav>
-                 <MoviesContainer movieData={movieData}/>
+                <Nav></Nav>
+                <MoviesContainer movieData={movieData}/>
                 </>
-              )
+                )
             }}/>
                
             {/* path="/favorites"
@@ -114,7 +114,14 @@ export class App extends Component {
             <Route 
             exact 
             path="/movies"
-            render = {() => <MoviesContainer movieData={movieData}/>} //refactor this to access from store
+            render = {() => {
+              return (
+                <>
+                  <Nav></Nav>
+                  <MoviesContainer movieData={movieData}/>
+                </>
+                )
+            }} 
             />
             <Route 
             exact 
