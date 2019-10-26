@@ -2,12 +2,13 @@ import React from 'react';
 import './Nav.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { setUser } from '../../actions/index'
 
 
 export const Nav = (props) => {
   const { user } = props;
   const loginLink = <Link to='/login'><button>Login</button></Link>;
-  const logoutLink = <Link to='/'><button>Logout</button></Link>
+  const logoutLink = <Link to='/'><button onClick={setUser()}>Logout</button></Link>
 
   return (
     <nav>
@@ -21,4 +22,11 @@ export const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps, null)(Nav);
+export const mapDispatchToProps = dispatch => ({
+  setUser: () => dispatch(setUser({
+    name: '',
+    id: ''
+  }))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
