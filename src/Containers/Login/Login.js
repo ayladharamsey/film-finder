@@ -3,6 +3,7 @@ import './Login.scss';
 import { setUser } from '../../actions'
 import { connect } from 'react-redux'
 import { user } from '../../reducers/user';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -53,6 +54,7 @@ class Login extends Component {
           <button onClick={this.handleClick}>
             Sign In
           </button>
+          <Link to='/create-user'><h5>Not a user? Create a new user account!</h5></Link>
         </form>
     )
   }

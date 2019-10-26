@@ -79,11 +79,11 @@ export class App extends Component {
     return (
         <Switch>
           <main>
-            {/* <Route 
+            <Route 
             exact 
-            path="/"
+            path="/create-user"
             render = {() => <CreateUser addUser={this.addUser} />}  
-            /> */}
+            />
             <Route 
             exact 
             path="/login"
