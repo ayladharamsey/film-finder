@@ -25,17 +25,12 @@ export const getMovies = async () => {
   return await Promise.all(cleanedMovieData);
 }
 
-export const createNewUser = () => {
-
-}
-
 export const getFavorites = async (id) => {
     const response = await fetch('/api/v1/users/1/moviefavorites');
     if(!response.ok) {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    console.log(favorites)
     return favorites;
 }
 
@@ -43,17 +38,33 @@ export const setFavorites = () => {
     
 }
 
-export const loginUser = async userInfo => { 
+export const loginUserCheck = async userInfo => { 
   const options = {
-    method: 'Post',
+    method: 'POST',
     body: JSON.stringify(userInfo), 
     headers: {
-      'Content-Type' : 'appliction/json'
+      'Content-Type' : 'application/json'
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/login`, options)
   if(!response.ok) {
     throw new Error('There was an error getting your information!')
   }
-
+  const data = await response.json();
+  return data 
 }
+
+export const createNewUser = async (userInfo) => {
+  console.log(userInfo)
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(userInfo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const response = await fetch('http://localhost:3001/api/v1/users', options)
+  const data = await response.json();
+  return data;
+}
+

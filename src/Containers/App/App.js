@@ -1,3 +1,5 @@
+/* eslint-disable import/first */
+
 import './App.scss';
 import Login from '../Login/Login';
 import { connect } from 'react-redux';
@@ -5,9 +7,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { getMovies, createNewUser, getFavorites } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored } from '../../actions';
+import Nav from '../Nav/Nav'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
+
+import { loginUserCheck } from '../../apiCalls';
+
+import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
 export class App extends Component {
   
@@ -23,16 +29,38 @@ export class App extends Component {
     }
   }
   
-  addUser = async newUser => {
-    try {
-      await createNewUser(newUser);
-      const users = await getFavorites(); 
-      this.props.setUser(users);
-    } catch(error) {
-      this.props.isLoading(false);
-      this.props.hasErrored(error.message);
+   addUser = async newUser => {
+      try {
+        const response = await createNewUser(newUser); 
+        this.props.setUser({
+          id: response.id,
+          name: response.name,
+          email: response.email, 
+          password: response.passoword
+        });
+      } catch(error) {
+        this.props.isLoading(false);
+        this.props.hasErrored(error.message);
+      }
     }
-  }
+
+    loginUser = async user => {
+      console.log("this is loginUser in App firing")
+      console.log("user", user)
+      try {
+       const response = await loginUserCheck(user);
+       if(response.id) {
+         this.props.setUser({
+           name: response.name,
+           id: response.id
+         })
+       }
+
+      }
+      catch({message}){
+      this.props.hasErrored(message);
+      }
+    }
     
   retrieveFavorites = async id => {
     try {
@@ -49,35 +77,51 @@ export class App extends Component {
   render() {
     const { movieData, setUser } = this.props;
     return (
-      <Router>
         <Switch>
           <main>
             <Route 
             exact 
-            path="/"
-            render = {() => <MoviesContainer movieData={movieData}/>}
+            path="/create-user"
+            render = {() => <CreateUser addUser={this.addUser} />}  
             />
             <Route 
             exact 
             path="/login"
-            render = {() => <Login setUser={setUser} />}
+            render = {() => <Login loginUser={this.loginUser} />}
             />
             <Route 
             exact 
-            path="/favorites"
+            path="/"
+            render = {() => {
+              return (
+                <>
+                <Nav></Nav>
+                <MoviesContainer movieData={movieData}/>
+                </>
+                )
+            }}/>
+               
+            {/* path="/favorites"
             render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
 
             // MS - movieData also contains the favorited movies, can we just filter for the favorites?  have written example above
-            />
-            <Route 
+            /> */}
+            {/* <Route 
             exact 
-            path="/create-user"
-            render = {() => <CreateUser />} // we will need to pass some props here 
-            />
+            path="/favorites"
+            render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+            /> */}
             <Route 
             exact 
             path="/movies"
-            render = {() => <MoviesContainer movieData={movieData}/>} //refactor this to access from store
+            render = {() => {
+              return (
+                <>
+                  <Nav></Nav>
+                  <MoviesContainer movieData={movieData}/>
+                </>
+                )
+            }} 
             />
             <Route 
             exact 
@@ -92,7 +136,6 @@ export class App extends Component {
             />
           </main>
         </Switch>
-      </Router>
     );
   }
 }
