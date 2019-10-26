@@ -32,14 +32,16 @@ h1 {
   color: $text-color;
   width:20%;
   position: absolute;
-  top: 14px;
+  top: 20px;
   left: 268px;
+  border: 1px solid  #f5f5f5;
   padding: $paddingInterior;
   box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
     &:hover {
       color: $background-color;
       background-color: $button-color - 10;
       box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
+      border: 0px;
     }
 }
 .input_title {
