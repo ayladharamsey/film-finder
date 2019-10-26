@@ -40,6 +40,7 @@ class CreateUser extends Component {
       const { name, email, password } = this.state; 
       return (
         <form className="form">
+          <h1 className="title">FILMFINDER</h1>
           <section className="input_field">
             <h2 className="input_title" >Sign Up Now!</h2>
             <input 
