@@ -31,7 +31,6 @@ export const getFavorites = async (id) => {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    console.log(favorites)
     return favorites;
 }
 

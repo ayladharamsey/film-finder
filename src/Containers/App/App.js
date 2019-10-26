@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import Nav from '../Nav/Nav'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
 
@@ -44,6 +45,8 @@ export class App extends Component {
     }
 
     loginUser = async user => {
+      console.log("this is loginUser in App firing")
+      console.log("user", user)
       try {
        const response = await loginUserCheck(user);
        if(response.id) {
@@ -89,21 +92,36 @@ export class App extends Component {
             <Route 
             exact 
             path="/"
-            render = {() => <MoviesContainer movieData={movieData}/>}
-            path="/favorites"
+            render = {() => {
+              return (
+                <>
+                <Nav></Nav>
+                <MoviesContainer movieData={movieData}/>
+                </>
+                )
+            }}/>
+               
+            {/* path="/favorites"
             render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
 
             // MS - movieData also contains the favorited movies, can we just filter for the favorites?  have written example above
-            />
-            <Route 
+            /> */}
+            {/* <Route 
             exact 
             path="/favorites"
-            render = {() => <MoviesContainer movieData={movieData} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
-            />
+            render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+            /> */}
             <Route 
             exact 
             path="/movies"
-            render = {() => <MoviesContainer movieData={movieData}/>} //refactor this to access from store
+            render = {() => {
+              return (
+                <>
+                  <Nav></Nav>
+                  <MoviesContainer movieData={movieData}/>
+                </>
+                )
+            }} 
             />
             <Route 
             exact 

@@ -4,6 +4,7 @@ import { setUser } from '../../actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { user } from '../../reducers/user';
+import { Link, Redirect, NavLink } from 'react-router-dom';
 
 export class Login extends Component {
   constructor() {
@@ -19,7 +20,7 @@ export class Login extends Component {
   }
 
   handleClick = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.loginUser({
       email: this.state.email,
       password: this.state.password
