@@ -78,12 +78,12 @@ export class App extends Component {
           <main>
             <Route 
             exact 
-            path="/"
+            path="/create-user"
             render = {() => <CreateUser addUser={this.addUser} />}  
             />
             <Route 
             exact 
-            path="/"
+            path="/login"
             render = {() => <Login loginUser={this.loginUser} />}
             />
             <Route 

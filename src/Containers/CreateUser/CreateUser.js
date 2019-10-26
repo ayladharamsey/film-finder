@@ -3,7 +3,6 @@ import './Create.scss';
 import { setUser } from '../../actions'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 class CreateUser extends Component { 
@@ -44,7 +43,9 @@ class CreateUser extends Component {
         <form className="form">
           <h1 className="title">FILMFINDER</h1>
           <section className="input_field">
-            <button className="sign_in-btn">login</button>
+            <Link to='/login'>
+              <button className="sign_in-btn">login</button>
+            </Link>
             <h2 className="input_title" >Sign Up Now!</h2>
             <input 
             className="name"
