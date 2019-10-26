@@ -26,6 +26,18 @@ h1 {
   font-size: 3.5em;
 }
 
+.sign_in-btn {
+  width:20%;
+  position: absolute;
+  top: 14px;
+  left: 268px;
+  padding: $paddingInterior;
+  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+    &:hover {
+      background-color: $button-color - 10;
+      box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
+    }
+}
 .input_title {
   font-family: 'Source Sans Pro', sans-serif; 
   background-color: $background-color; 
@@ -45,6 +57,7 @@ h1 {
   float: right;
   margin: 10%;
   height: 50%;
+  position: relative;
 }
 
 .name {
