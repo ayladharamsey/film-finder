@@ -31,7 +31,6 @@ export const getFavorites = async (id) => {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    console.log(favorites)
     return favorites;
 }
 
@@ -48,7 +47,6 @@ export const loginUserCheck = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/login`, options)
-  console.log("response::",response)
   if(!response.ok) {
     throw new Error('There was an error getting your information!')
   }
@@ -66,7 +64,6 @@ export const createNewUser = async (userInfo) => {
     }
   }
   const response = await fetch('http://localhost:3001/api/v1/users', options)
-  console.log(response)
   const data = await response.json();
   return data;
 }
