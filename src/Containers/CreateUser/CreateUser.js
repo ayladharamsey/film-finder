@@ -40,28 +40,31 @@ class CreateUser extends Component {
       const { name, email, password } = this.state; 
       return (
         <form className="form">
-          <input 
-          className="name"
-          name="name"
-          value={name}
-          placeholder="Name"
-          onChange={this.updateUser}
-          />
-          <input 
-          className="email"
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={this.updateUser}
-          />
-          <input 
-          className="password"
-          name="password"
-          value={password}
-          placeholder="Password"
-          onChange={this.updateUser}
-          />
-          <button className="button" onClick={this.handleForm}>Submit</button>
+          <section className="input_field">
+            <h2 className="input_title" >Sign Up Now!</h2>
+            <input 
+            className="name"
+            name="name"
+            value={name}
+            placeholder="type your name"
+            onChange={this.updateUser}
+            />
+            <input 
+            className="email"
+            name="email"
+            value={email}
+            placeholder="type your email"
+            onChange={this.updateUser}
+            />
+            <input 
+            className="password"
+            name="password"
+            value={password}
+            placeholder="type your password"
+            onChange={this.updateUser}
+            />
+            <button className="button" onClick={this.handleForm}>sign up</button>
+          </section>
         </form>
       )
     }
