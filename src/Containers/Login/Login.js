@@ -12,7 +12,6 @@ export class Login extends Component {
       email: '',
       password: '',
       buttonClick: false,
-      error: 'error', 
     }
   }
 
@@ -63,10 +62,6 @@ export class Login extends Component {
     if ((buttonClick === true) && (user.id !== undefined)) {
       error = this.linkToMovies()
     }
-
-
-
-    // const something = hasErrored !== "" ? this.handleError() : null
 
     return (
         <form className="login_form">
