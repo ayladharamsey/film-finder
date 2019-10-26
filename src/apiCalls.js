@@ -48,6 +48,7 @@ export const loginUserCheck = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/login`, options)
+  console.log("response::",response)
   if(!response.ok) {
     throw new Error('There was an error getting your information!')
   }

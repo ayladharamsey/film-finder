@@ -45,6 +45,8 @@ export class App extends Component {
     }
 
     loginUser = async user => {
+      console.log("this is loginUser in App firing")
+      console.log("user", user)
       try {
        const response = await loginUserCheck(user);
        if(response.id) {
@@ -81,12 +83,12 @@ export class App extends Component {
             exact 
             path="/"
             render = {() => <CreateUser addUser={this.addUser} />}  
-            />
+            /> */}
             <Route 
             exact 
-            path="/"
+            path="/login"
             render = {() => <Login loginUser={this.loginUser} />}
-            /> */}
+            />
             <Route 
             exact 
             path="/"

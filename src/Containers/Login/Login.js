@@ -18,6 +18,7 @@ class Login extends Component {
   }
 
   handleClick = e => {
+    console.log("this.props", this.props)
     e.preventDefault();
     this.props.loginUser({
       email: this.state.email,
