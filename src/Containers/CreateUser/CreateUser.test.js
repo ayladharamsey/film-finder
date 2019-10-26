@@ -1,18 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CreateUser from './CreateUser';
+import { CreateUser, mapDispatchToProps } from './CreateUser';
 
 
 describe('CreateUser container tests', () => {
 
   it('CreateUser should match its snapshot', () => {
-    const mockUser = {
-      name: 'Alan',
-      email: 'alan@turing.io',
-      password: 'password'
-  }
-    const wrapper = shallow( <CreateUser 
-      addUser={jest.fn(mockUser)} /> )
+    const wrapper = shallow( <CreateUser  /> )
     expect(wrapper).toMatchSnapshot();
   })
 })
@@ -30,3 +24,10 @@ describe('CreateUser container tests', () => {
 //   />)
 //   expect(wrapper).toMatchSnapshot();
 // })
+
+// const mockUser = {
+//   name: 'Alan',
+//   email: 'alan@turing.io',
+//   password: 'password'
+// }
+// addUser = { jest.fn(mockUser) }
