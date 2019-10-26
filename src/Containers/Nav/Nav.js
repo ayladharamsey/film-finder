@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 
 export const Nav = (props) => {
-  const { user } = props;
+  const { user } = props.user;
   const loginLink = <Link to='/login'><button>Login</button></Link>;
   const logoutLink = <Link to='/'><button>Logout</button></Link>
 
