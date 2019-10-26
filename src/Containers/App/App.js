@@ -98,7 +98,7 @@ export class App extends Component {
             <Route 
             exact 
             path="/favorites"
-            render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
+            render = {() => <MoviesContainer movieData={movieData} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
             />
             <Route 
             exact 

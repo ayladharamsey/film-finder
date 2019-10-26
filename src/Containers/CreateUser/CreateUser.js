@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Create.scss';
-import { connect } from 'react-redux';
 import { setUser } from '../../actions'
+import { connect } from 'react-redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 class CreateUser extends Component { 
@@ -39,26 +39,29 @@ class CreateUser extends Component {
     render() {
       const { name, email, password } = this.state; 
       return (
-        <form>
+        <form className="form">
           <input 
+          className="name"
           name="name"
           value={name}
           placeholder="Name"
           onChange={this.updateUser}
           />
           <input 
+          className="email"
           name="email"
           value={email}
           placeholder="Email"
           onChange={this.updateUser}
           />
           <input 
+          className="password"
           name="password"
           value={password}
           placeholder="Password"
           onChange={this.updateUser}
           />
-          <button onClick={this.handleForm}>Submit</button>
+          <button className="button" onClick={this.handleForm}>Submit</button>
         </form>
       )
     }
