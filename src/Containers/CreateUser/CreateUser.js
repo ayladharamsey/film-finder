@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setUser } from '../../actions'
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-class CreateUser extends Component { 
+export class CreateUser extends Component { 
   constructor() { 
     super(); 
     this.state = {
@@ -65,7 +65,7 @@ class CreateUser extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user))
 })
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CreateUser from './CreateUser';
+import { CreateUser } from './CreateUser';
 
 describe('CreateUser container tests', () => {
 
