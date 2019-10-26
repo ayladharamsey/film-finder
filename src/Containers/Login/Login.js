@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { setUser } from '../../actions'
-import { connect } from 'react-redux'
+import { setUser } from '../../actions';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { user } from '../../reducers/user';
 
 class Login extends Component {
@@ -36,22 +37,31 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-        <form className="login_form">
-          <input
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={this.updateUser}
-          />
-          <input
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={this.updateUser}
-          />
-          <button onClick={this.handleClick}>
-            Sign In
-          </button>
+      <form className="form">
+        <h1 className="title">FILMFINDER</h1>
+          <section className="input_field">
+            <Link to='/create-user'>
+              <button className="sign_in-btn">create login</button>
+            </Link>
+            <h2 className="input_title" >User Login</h2>
+            <input
+              className="email"
+              name="email"
+              value={email}
+              placeholder="Email"
+              onChange={this.updateUser}
+            />
+            <input
+              className="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={this.updateUser}
+            />
+            <button className="button" onClick={this.handleClick}>
+              login
+            </button>
+          </section>
         </form>
     )
   }
