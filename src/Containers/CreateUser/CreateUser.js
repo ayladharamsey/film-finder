@@ -68,7 +68,9 @@ class CreateUser extends Component {
             placeholder="type your password"
             onChange={this.updateUser}
             />
-            <button className="button" onClick={this.handleForm}>sign up</button>
+            <Link to="/movies">
+              <button className="button" onClick={this.handleForm}>sign up</button>
+            </Link>
           </section>
         </form>
       )

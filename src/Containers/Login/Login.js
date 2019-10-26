@@ -58,9 +58,11 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.updateUser}
             />
-            <button className="button" onClick={this.handleClick}>
-              login
-            </button>
+            <Link to="/movies">
+              <button className="button" onClick={this.handleClick}>
+                login
+              </button>
+            </Link>
           </section>
         </form>
     )
