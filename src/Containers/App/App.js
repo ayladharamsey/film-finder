@@ -76,7 +76,7 @@ export class App extends Component {
     return (
         <Switch>
           <main>
-            <Route 
+            {/* <Route 
             exact 
             path="/"
             render = {() => <CreateUser addUser={this.addUser} />}  
@@ -85,21 +85,21 @@ export class App extends Component {
             exact 
             path="/"
             render = {() => <Login loginUser={this.loginUser} />}
-            />
+            /> */}
             <Route 
             exact 
             path="/"
-            render = {() => <MoviesContainer movieData={movieData}/>}
-            path="/favorites"
+            render = {() => <MoviesContainer movieData={movieData}/>}/>
+            {/* path="/favorites"
             render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
 
             // MS - movieData also contains the favorited movies, can we just filter for the favorites?  have written example above
-            />
-            <Route 
+            /> */}
+            {/* <Route 
             exact 
             path="/favorites"
             render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
-            />
+            /> */}
             <Route 
             exact 
             path="/movies"
