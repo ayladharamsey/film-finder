@@ -36,7 +36,7 @@ h1 {
   left: 74%;
   border: 1px solid  #f5f5f5;
   padding: $paddingInterior;
-  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+  box-shadow: 0px 5px 5px 0px #c2c1c1, 0px 10px 10px 0px #c2c1c1;
     &:hover {
       color: $background-color;
       background-color: $button-color - 10;
@@ -62,7 +62,7 @@ h1 {
   background-color: $background-color; 
   width: 30%;
   float: right;
-  height: 50%;
+  height: 40%;
   position: relative;
   margin-left: 250px;
   margin-top: 14%;
