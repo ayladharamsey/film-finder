@@ -14,11 +14,11 @@ $shadow-hover: #e8e8e8 - 10;
 }
 
 .title {
-  width: 40%;
+  width:30%;
   justify-content: center; 
   background-color: $background-color;
   color: $button-color;
-  font-family: $logo-font; 
+  font-family: 'Source Sans Pro', sans-serif; 
   padding: 4%;
 }
 
@@ -27,7 +27,7 @@ h1 {
 }
 
 .sign_in-btn {
-  font-family: $logo-font; 
+  font-family: 'Source Sans Pro', sans-serif; 
   background: $background-color;
   color: $text-color;
   width:20%;
@@ -44,9 +44,8 @@ h1 {
       border: 0px;
     }
 }
-
 .input_title {
-  font-family: $logo-font; 
+  font-family: 'Source Sans Pro', sans-serif; 
   background-color: $background-color; 
   margin: $margin;
   padding: $paddingInterior;
@@ -60,12 +59,11 @@ h1 {
   border: 1px solid $background-color;
   padding: 25px;
   background-color: $background-color; 
-  width: 30%;
+  width: 40%;
   float: right;
-  height: 40%;
+  margin: 10%;
+  height: 50%;
   position: relative;
-  margin-left: 250px;
-  margin-top: 14%;
 }
 
 .name {
@@ -86,6 +84,8 @@ h1 {
   padding:$paddingInterior;
 }
 
+
+
 .button { 
   margin: $margin;
   color: $background-color;
@@ -95,9 +95,8 @@ h1 {
   font-weight: 900;
   box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
     &:hover {
-      background-color: $button-color - 30;
+      background-color: $button-color - 10;
       box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
-      color: white;
     }
 }
 

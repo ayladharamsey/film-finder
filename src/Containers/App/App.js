@@ -1,3 +1,5 @@
+/* eslint-disable import/first */
+
 import './App.scss';
 import Login from '../Login/Login';
 import { connect } from 'react-redux';
