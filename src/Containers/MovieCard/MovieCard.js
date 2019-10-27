@@ -6,6 +6,11 @@ import favorite from '../../images/favorite.svg'
 import unfavorite from '../../images/unfavorite.svg' 
 
 export const MovieCard = (props) => {
+
+  const favoriteMovie = (event, id) => {
+    props.faveMovie(parseInt(event.target.parentNode.id))
+  }
+
   const { 
     id, 
     movieRating, 
@@ -24,10 +29,9 @@ export const MovieCard = (props) => {
       <p>{overview}</p>
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
-      {/* <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button> */}
       {isFavorited ? 
-        <img src={favorite} alt="favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/> : 
-        <img src={unfavorite} alt="un favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/>}
+        <img src={favorite} alt="favorited" onClick={(event) => favoriteMovie(event, id)}/> : 
+        <img src={unfavorite} alt="un favorited" onClick={(event) => favoriteMovie(event, id)}/>}
     </article>
   )
 }
