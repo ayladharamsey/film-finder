@@ -55,7 +55,7 @@ export class Login extends Component {
     const { hasErrored, user } = this.props;
     let error;
 
-    if ((buttonClick === true) && (hasErrored !== "")) {
+    if ((buttonClick === true)) {
       error = this.handleError()
     }
 
@@ -88,8 +88,8 @@ export class Login extends Component {
             <button className="button" onClick={(e) => this.handleClick(e)}>
               login
             </button>
+            {error}
           </section>
-          {error}
         </form>
     )
   }
