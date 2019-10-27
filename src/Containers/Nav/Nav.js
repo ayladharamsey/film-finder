@@ -12,7 +12,7 @@ export const Nav = (props) => {
 
   return (
     <nav>
-      <h1>Movie Tracker</h1>
+      <h1>FILMFINDER</h1>
       {user.name ? logoutLink : loginLink}
     </nav>
   )
