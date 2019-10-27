@@ -20,9 +20,12 @@ const MoviesContainer = ({ movieData }) => {
   
 
   return (
-    <section className="movies-container">
-      {movies}
-    </section>
+    
+    <div className="scroll-wrapper">
+      <section className="movies-container">
+          {movies}
+      </section>
+    </div>
   )
 }
 
