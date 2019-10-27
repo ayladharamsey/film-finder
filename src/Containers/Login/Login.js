@@ -85,11 +85,9 @@ export class Login extends Component {
               placeholder="Password"
               onChange={this.updateUser}
             />
-            <Link to="/movies">
-              <button className="button" onClick={(e) => this.handleClick(e)}>
-                login
-              </button>
-            </Link>
+            <button className="button" onClick={(e) => this.handleClick(e)}>
+              login
+            </button>
           </section>
           {error}
         </form>
