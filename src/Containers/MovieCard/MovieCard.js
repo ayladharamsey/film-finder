@@ -25,6 +25,7 @@ export const MovieCard = (props) => {
       )}
     props.faveMovie(parseInt(event.target.parentNode.id))
   }
+  
 
   const { 
     id, 
