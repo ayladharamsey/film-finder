@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Create.scss';
-import { connect } from 'react-redux';
 import { setUser } from '../../actions'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 export class CreateUser extends Component { 
@@ -39,26 +40,38 @@ export class CreateUser extends Component {
     render() {
       const { name, email, password } = this.state; 
       return (
-        <form>
-          <input 
-          name="name"
-          value={name}
-          placeholder="Name"
-          onChange={this.updateUser}
-          />
-          <input 
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={this.updateUser}
-          />
-          <input 
-          name="password"
-          value={password}
-          placeholder="Password"
-          onChange={this.updateUser}
-          />
-          <button onClick={this.handleForm}>Submit</button>
+        <form className="form">
+          <h1 className="title">FILMFINDER</h1>
+          <section className="input_field">
+            <Link to='/login'>
+              <button className="sign_in-btn">login</button>
+            </Link>
+            <h2 className="input_title" >Sign Up Now!</h2>
+            <input 
+            className="name"
+            name="name"
+            value={name}
+            placeholder="type your name"
+            onChange={this.updateUser}
+            />
+            <input 
+            className="email"
+            name="email"
+            value={email}
+            placeholder="type your email"
+            onChange={this.updateUser}
+            />
+            <input 
+            className="password"
+            name="password"
+            value={password}
+            placeholder="type your password"
+            onChange={this.updateUser}
+            />
+            <Link to="/movies">
+              <button className="button" onClick={this.handleForm}>sign up</button>
+            </Link>
+          </section>
         </form>
       )
     }

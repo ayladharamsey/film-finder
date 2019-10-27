@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { setUser } from '../../actions'
-import { connect } from 'react-redux'
+import { setUser } from '../../actions';
+import { connect } from 'react-redux';
 import { user } from '../../reducers/user';
 import { Link, Redirect, NavLink } from 'react-router-dom';
 
@@ -55,7 +55,7 @@ export class Login extends Component {
     const { hasErrored, user } = this.props;
     let error;
 
-    if ((buttonClick === true) && (hasErrored !== "")) {
+    if ((buttonClick === true)) {
       error = this.handleError()
     }
 
@@ -64,22 +64,32 @@ export class Login extends Component {
     }
 
     return (
-        <form className="login_form">
-          <input
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={this.updateUser}
-          />
-          <input
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={this.updateUser}
-          />
-          <button onClick={(e) => this.handleClick(e)}>Sign in</button>
-          <Link to='/create-user'><h5>Not a user? Create a new user account!</h5></Link>
-          {error}
+      <form className="form">
+        <h1 className="title">FILMFINDER</h1>
+          <section className="input_field">
+            <Link to='/create-user'>
+              <button className="sign_in-btn">create login</button>
+            </Link>
+            <h2 className="input_title" >User Login</h2>
+            <input
+              className="email"
+              name="email"
+              value={email}
+              placeholder="Email"
+              onChange={this.updateUser}
+            />
+            <input
+              className="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={this.updateUser}
+            />
+            <button className="button" onClick={(e) => this.handleClick(e)}>
+              login
+            </button>
+            {error}
+          </section>
         </form>
     )
   }

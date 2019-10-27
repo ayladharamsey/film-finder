@@ -1,0 +1,102 @@
+$background-color: white;
+$margin: 5px; 
+$text-color: black;
+$paddingInterior: 5px;
+$button-color: #c71a1a;
+$box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:700&display=swap');
+$logo-font:'Source Sans Pro', sans-serif;
+$shadow-hover: #e8e8e8 - 10; 
+
+.form {
+  height: 100vh;
+  display: flex;
+}
+
+.title {
+  width:30%;
+  justify-content: center; 
+  background-color: $background-color;
+  color: $button-color;
+  font-family: 'Source Sans Pro', sans-serif; 
+  padding: 4%;
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+.sign_in-btn {
+  font-family: 'Source Sans Pro', sans-serif; 
+  background: $background-color;
+  color: $text-color;
+  width:20%;
+  position: absolute;
+  top: 5%;
+  left: 74%;
+  border: 1px solid  #f5f5f5;
+  padding: $paddingInterior;
+  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+    &:hover {
+      color: $background-color;
+      background-color: $button-color - 10;
+      box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
+      border: 0px;
+    }
+}
+.input_title {
+  font-family: 'Source Sans Pro', sans-serif; 
+  background-color: $background-color; 
+  margin: $margin;
+  padding: $paddingInterior;
+  color: $text-color;
+}
+
+.input_field {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid $background-color;
+  padding: 25px;
+  background-color: $background-color; 
+  width: 40%;
+  float: right;
+  margin: 10%;
+  height: 50%;
+  position: relative;
+}
+
+.name {
+  background-color: $background-color; 
+  margin: $margin;
+  padding: $paddingInterior;
+}
+
+.email {
+  background-color: $background-color;
+  margin: $margin; 
+  padding:$paddingInterior;
+}
+
+.password {
+  background-color: $background-color; 
+  margin: $margin;
+  padding:$paddingInterior;
+}
+
+
+
+.button { 
+  margin: $margin;
+  color: $background-color;
+  padding:$paddingInterior;
+  background-color: $button-color;
+  box-shadow: $box-shadow;
+  font-weight: 900;
+  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+    &:hover {
+      background-color: $button-color - 10;
+      box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
+    }
+}
+
