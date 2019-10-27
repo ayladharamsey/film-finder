@@ -19,10 +19,14 @@ export const MovieCard = (props) => {
   return (
     <article id={id} className="movie-card">
       <h1 className="movie_title">{title}</h1>
+      <img
+        className='movieCard__img'
+        src={posterImage}
+        alt='Official movie poster'
+      />
       <p className="rating" >{movieRating}</p>
       <p className="image" >{backgroundImage}</p>
       <p className="overview">{overview}</p>
-      <p className="posterImage">{posterImage}</p>
       <p className="releaseDate">{releaseDate}</p>
       {/* <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button> */}
       {isFavorited ? 
