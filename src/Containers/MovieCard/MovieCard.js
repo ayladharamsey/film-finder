@@ -18,20 +18,23 @@ export const MovieCard = (props) => {
   } = props;
   return (
     <article id={id} className="movie-card">
-      <h1 className="movie_title">{title}</h1>
       <img
         className='movieCard__img'
         src={posterImage}
         alt='Official movie poster'
       />
-      <p className="rating" >{movieRating}</p>
-      <p className="image" >{backgroundImage}</p>
-      <p className="overview">{overview}</p>
-      <p className="releaseDate">{releaseDate}</p>
-      {/* <button onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button> */}
-      {isFavorited ? 
-        <img src={favorite} alt="favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/> : 
-        <img src={unfavorite} alt="un favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/>}
+      {/* <p className="rating" >{movieRating}</p> */}
+      {/* <p className="image" >{backgroundImage}</p> */}
+      {/* <p className="overview">{overview}</p> */}
+      {/* <p className="releaseDate">{releaseDate}</p> */}
+      <div className="footer">
+        <p className="movie_title">{title}</p>
+        <button className="fave_button" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}>Favorite</button>
+        {isFavorited ? 
+          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/> : 
+          <img className="fave_btn-img"
+          src={unfavorite} alt="un favorited" onClick={(event) => props.faveMovie(parseInt(event.target.parentNode.id))}/>}
+      </div>
     </article>
   )
 }
