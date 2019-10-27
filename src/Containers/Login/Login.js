@@ -45,7 +45,7 @@ export class Login extends Component {
   linkToMovies = () => {
     if (this.props.user.email !== ""){
       return (
-        <Redirect to='/movies'>Movies Link</Redirect>
+        <Redirect to='/movies'></Redirect>
       )
     }
   }

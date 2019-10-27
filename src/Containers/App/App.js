@@ -9,10 +9,7 @@ import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Nav from '../Nav/Nav'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { getMovies, createNewUser, getFavorites, setFavorites } from '../../apiCalls';
-
-import { loginUserCheck } from '../../apiCalls';
-
+import { getMovies, createNewUser, getFavorites, loginUserCheck } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
 export class App extends Component {
@@ -100,17 +97,10 @@ export class App extends Component {
                 </>
                 )
             }}/>
-               
-            {/* path="/favorites"
-            render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
-
-            // MS - movieData also contains the favorited movies, can we just filter for the favorites?  have written example above
-            /> */}
-            {/* <Route 
-            exact 
+            <Route 
             path="/favorites"
-            render = {() => <MoviesContainer movieData={movieData} favoritedMovie={favoritedMovie} />} // we are going to delete movieData our, and we just going to pass the favorites Data. Right now, we have our movieContainer only based off of movieData, but we should conditionally render the favorites
-            /> */}
+            render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>}
+            />
             <Route 
             exact 
             path="/movies"
