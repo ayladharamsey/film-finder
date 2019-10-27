@@ -97,6 +97,7 @@ h1 {
     &:hover {
       background-color: $button-color - 30;
       box-shadow: 0px 5px 5px 0px $shadow-hover, 0px 10px 10px 0px $shadow-hover;
+      color: white;
     }
 }
 
