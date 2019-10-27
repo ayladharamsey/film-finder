@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
 import { setUser } from '../../actions';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { user } from '../../reducers/user';
 import { Link, Redirect, NavLink } from 'react-router-dom';
@@ -11,7 +10,8 @@ export class Login extends Component {
     super();
     this.state = {
       email: '',
-      password: '' 
+      password: '',
+      buttonClick: false,
     }
   }
 
@@ -20,7 +20,8 @@ export class Login extends Component {
   }
 
   handleClick = e => {
-    // e.preventDefault();
+    e.preventDefault()
+    this.setState({buttonClick: true})
     this.props.loginUser({
       email: this.state.email,
       password: this.state.password
@@ -35,8 +36,33 @@ export class Login extends Component {
     });
   }
 
+  handleError = () => {
+    return (
+      <h3>{this.props.hasErrored}</h3>
+    )
+  }
+
+  linkToMovies = () => {
+    if (this.props.user.email !== ""){
+      return (
+        <Redirect to='/movies'>Movies Link</Redirect>
+      )
+    }
+  }
+
   render() {
-    const { email, password } = this.state;
+    const { email, password, buttonClick } = this.state;
+    const { hasErrored, user } = this.props;
+    let error;
+
+    if ((buttonClick === true) && (hasErrored !== "")) {
+      error = this.handleError()
+    }
+
+    if ((buttonClick === true) && (user.id !== undefined)) {
+      error = this.linkToMovies()
+    }
+
     return (
       <form className="form">
         <h1 className="title">FILMFINDER</h1>
@@ -60,18 +86,24 @@ export class Login extends Component {
               onChange={this.updateUser}
             />
             <Link to="/movies">
-              <button className="button" onClick={this.handleClick}>
+              <button className="button" onClick={(e) => this.handleClick(e)}>
                 login
               </button>
             </Link>
           </section>
+          {error}
         </form>
     )
   }
 }
 
+export const mapStateToProps = state => ({
+  hasErrored: state.hasErrored,
+  user: state.user,
+})
+
 export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
