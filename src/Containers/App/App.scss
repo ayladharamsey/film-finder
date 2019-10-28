@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0px; 
   padding: 0px; 
-  background-color: black;
 }
 
 .App {
@@ -14,4 +13,8 @@ h1 {
   color:black; 
   display: flex;
   align-items: center;
+}
+
+main {
+  background-color: black;
 }
