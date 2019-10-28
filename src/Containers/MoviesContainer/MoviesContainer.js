@@ -20,12 +20,9 @@ const MoviesContainer = ({ movieData }) => {
   
 
   return (
-    
-    <div className="scroll-wrapper">
       <section className="movies-container">
           {movies}
       </section>
-    </div>
   )
 }
 

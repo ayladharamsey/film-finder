@@ -1,20 +1,39 @@
-$style-border: 1px solid red; 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:700&display=swap');
+$logo-font:'Source Sans Pro', sans-serif; 
+
+.footer {
+  display: flex;
+  background-color: whitesmoke;
+  flex-direction: column;
+  height: 15%;
+}
+
+.fave_btn-img {
+  height: 30px;
+  width: 53%;
+  background-color: whitesmoke;
+  align-self: center;
+  margin: 10px;
+}
 
 .movie-card {
-  margin-left: 50px;
-  // border: $style-border; 
-  height: 50%; 
-  width: 150px; 
-  background-color: beige; 
-  padding: 15px; 
-  box-shadow: 0px 5px 5px 0px #e8e8e8, 0px 10px 10px 0px #e8e8e8;
+  margin: 25px;
+  height: 500px;
+  width: 290px;
+  box-shadow: 0px 5px 5px 0px #1a1a1a, 0px 10px 10px 0px #1a1a1a;
   border-radius: 7px;
-
 }
 
-img {
-  height: 20px;
+.movie_title {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  background-color: whitesmoke;
+  text-align: center;
+  font-weight: bold;
+  margin: 3px;
 }
 
-
+.movieCard__img {
+  width: 100%; 
+}
 
