@@ -60,8 +60,7 @@ export class App extends Component {
   retrieveFavorites = async id => {
     if (id) {
       try {
-        const faves = await this.getFavorites(id);
-        console.log(faves) // we need to set them before we can get them
+        const faves = await getFavorites(id);
         this.props.setFaves(faves);
       } catch({ message })  {
         this.props.hasErrored(message);

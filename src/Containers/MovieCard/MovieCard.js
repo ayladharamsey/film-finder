@@ -5,6 +5,7 @@ import { faveMovie } from '../../actions/index'
 import favorite from '../../images/favorite.svg'
 import unfavorite from '../../images/unfavorite.svg'
 import { Redirect } from 'react-router-dom'; 
+import { setFavorites, getFavorites } from '../../apiCalls'
 
 
 export class MovieCard extends Component {
@@ -16,8 +17,17 @@ export class MovieCard extends Component {
   }
 
   render() {
-    const favoriteMovie = (event, id) => {
-      this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id))
+    const favoriteMovie = (event) => {
+      this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id));
+      getFavorites(this.props.user.id)
+      setFavorites(this.props.user.id, {
+        "movie_id": `${event.target.parentNode.parentNode.id}`,
+        "title": "sample",
+        "poster_path": "example",
+        "release_date": "2019-10-18",
+        "vote_average": 5.8,
+        "overview": "once upon a time"
+      } );
     }
   
     const checkLogginStatus = () => {
@@ -68,7 +78,7 @@ export class MovieCard extends Component {
         <p>Release Date: {releaseDate}</p>
         <p className="movie_title">{title}</p>
         {isFavorited ? 
-          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
+          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event)}/> : 
           <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
         {error}
       </div>

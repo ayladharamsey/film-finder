@@ -10,7 +10,7 @@ export const getMovies = async () => {
   }
   const movies = await response.json();
   const cleanedMovieData = await movies.results.map(async (result) => {
-    const { id, adult, backdrop_path, overview, poster_path, title, release_date } = result;
+    const { id, adult, backdrop_path, overview, poster_path, title, release_date, vote_average } = result;
     return {
         id: id,
         movieRating: adult,
@@ -19,14 +19,15 @@ export const getMovies = async () => {
         posterImage: `${imageUrl}${poster_path}`,
         title: title,
         releaseDate: release_date,
-        isFavorited: false
+        isFavorited: false,
+        voteAverage: vote_average
     }
   })
   return await Promise.all(cleanedMovieData);
 }
 
 export const getFavorites = async (id) => {
-    const response = await fetch('/api/v1/users/1/moviefavorites');
+    const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`);
     if(!response.ok) {
         throw new Error('There was an error getting your favorites.')
     }
@@ -34,15 +35,16 @@ export const getFavorites = async (id) => {
     return favorites;
 }
 
-export const setFavorites = async (id) => {
+export const setFavorites = async (id, faveObj) => {
   const options = {
     method: 'POST',
-    body: JSON.stringify(id),
+    body: JSON.stringify(
+  ),
     headers: {
       'Content-Type': 'application/json'
     }
   }
-  const response =  await fetch(`/api/v1/users/${id}/:movieFavorites`, options)
+  const response =  await fetch(`http://localhost:3001/api/v1/users/${id}/movieFavorites`, options)
     
 }
 
