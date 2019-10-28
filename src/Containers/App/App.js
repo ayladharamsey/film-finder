@@ -20,9 +20,6 @@ export class App extends Component {
       const films = await getMovies();
       this.props.setMovies(films);
       this.props.isLoading(false);
-      if (this.props.user.id) {
-        await this.retrieveFavorites(this.props.user.id)
-      }
     } catch({ message }) {
       this.props.hasErrored(message);
       this.props.isLoading(false);
@@ -53,7 +50,7 @@ export class App extends Component {
            id: response.id
          })
        }
-
+       this.retrieveFavorites(response.id)
       }
       catch({message}){
       this.props.hasErrored(message);
@@ -61,16 +58,15 @@ export class App extends Component {
     }
     
   retrieveFavorites = async id => {
-    console.log('hi')
-    try {
-      this.props.isLoading(true);
-      const faves = await getFavorites(id);
-      console.log('returned faves', faves)
-      this.props.isLoading(false);
-      this.props.setFaves(faves);
-    } catch(error) {
-      this.props.isLoading(false);
-      this.props.hasErrored(error.message);
+    if (id) {
+      try {
+        const faves = await this.getFavorites(id);
+        console.log(faves) // we need to set them before we can get them
+        this.props.setFaves(faves);
+      } catch({ message })  {
+        this.props.hasErrored(message);
+        this.props.isLoading(false);
+      }
     }
   }
    
@@ -87,7 +83,7 @@ export class App extends Component {
             <Route 
             exact 
             path="/login"
-            render = {() => <Login loginUser={this.loginUser} />}
+            render = {() => <Login loginUser={this.loginUser} retrieveFavorites={this.retrieveFavorites} />}
             />
             <Route 
             exact 

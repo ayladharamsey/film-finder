@@ -34,7 +34,15 @@ export const getFavorites = async (id) => {
     return favorites;
 }
 
-export const setFavorites = () => {
+export const setFavorites = async (id) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(id),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const response =  await fetch(`/api/v1/users/${id}/:movieFavorites`, options)
     
 }
 
@@ -59,7 +67,6 @@ export const loginUserCheck = async userInfo => {
 }
 
 export const createNewUser = async userInfo => {
-  console.log("userInfo", userInfo)
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
@@ -68,7 +75,6 @@ export const createNewUser = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/users`, options)
-  console.log("response", response)
   if (!response.ok) {
     throw new Error('There was an error getting your information!')
   }
