@@ -15,10 +15,9 @@ export class MovieCard extends Component {
     }
   }
 
-  
   render() {
     const favoriteMovie = (event, id) => {
-      this.props.faveMovie(parseInt(event.target.parentNode.id))
+      this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id))
     }
   
     const checkLogginStatus = () => {
@@ -65,11 +64,11 @@ export class MovieCard extends Component {
       <div className="footer">
       <p>Overview: {overview}</p>
       <p>Release Date: {releaseDate}</p>
-        <p className="movie_title">{title}</p>
-        {isFavorited ? 
-          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
-          <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
-        {error}
+      <p className="movie_title">{title}</p>
+      {isFavorited ? 
+        <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
+        <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
+      {error}
       </div>
     </article>
     )
