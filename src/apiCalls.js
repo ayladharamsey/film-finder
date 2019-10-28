@@ -55,7 +55,7 @@ export const loginUserCheck = async userInfo => {
 }
 
 export const createNewUser = async userInfo => {
-  console.log("userInfo", userInfo)
+  console.log("createUserInfo", userInfo)
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
