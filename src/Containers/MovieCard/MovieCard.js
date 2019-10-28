@@ -14,24 +14,29 @@ export class MovieCard extends Component {
     }
   }
 
-  favoriteMovie = (event, id) => {
-    this.props.faveMovie(parseInt(event.target.parentNode.id))
-  }
-
-  checkLogginStatus = (event, id) => {
-    if (this.props.user.id === undefined) {
-      return (
-        <Redirect to='/login'>Not Logged In</Redirect>
-      )
-    }
-    this.favoriteMovie(event, id)
-    return
-  }
-
-  
   
   render() {
-    const { id, 
+    const favoriteMovie = (event, id) => {
+      this.props.faveMovie(parseInt(event.target.parentNode.id))
+    }
+  
+    const checkLogginStatus = () => {
+      if (user.id === undefined) {
+        return (
+          <Redirect to='/login'>Not Logged In</Redirect>
+        )
+      }
+      return
+    }
+
+    const handleClick = (event, id) => {
+      this.setState({btnClick: true})
+      favoriteMovie(event, id) 
+    }
+
+    const { 
+    user,
+    id, 
     movieRating, 
     backgroundImage, 
     overview, 
@@ -40,8 +45,17 @@ export class MovieCard extends Component {
     releaseDate, 
     isFavorited 
     } = this.props;
+
+    const { btnClick } = this.state
+
+    let error;
+
+    if ((btnClick === true)) {
+      error = checkLogginStatus()
+    }
     
     return (
+    
     <article id={id} className="movie-card">
       <h1>{title}</h1>
       <p>{movieRating}</p>
@@ -50,8 +64,9 @@ export class MovieCard extends Component {
       <p>{posterImage}</p>
       <p>{releaseDate}</p>
       {isFavorited ? 
-        <img src={favorite} alt="favorited" onClick={(event) => this.checkLogginStatus(event, id)}/> : 
-        <img src={unfavorite} alt="un favorited" onClick={(event) => this.checkLogginStatus(event, id)}/>}
+        <img src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
+        <img src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
+      {error}
     </article>
     )
   }
