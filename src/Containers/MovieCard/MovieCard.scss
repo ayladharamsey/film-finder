@@ -16,6 +16,10 @@ $logo-font:'Source Sans Pro', sans-serif;
   margin: 10px;
 }
 
+p {
+  background-color: whitesmoke;
+}
+
 .movie-card {
   margin: 25px;
   height: 500px;
@@ -36,4 +40,3 @@ $logo-font:'Source Sans Pro', sans-serif;
 .movieCard__img {
   width: 100%; 
 }
-
