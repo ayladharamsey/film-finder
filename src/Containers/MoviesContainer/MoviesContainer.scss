@@ -3,29 +3,18 @@
   padding: 0px; 
 }
 
-.scroll-wrapper {
-  width: 70%;
-  transform: rotate(-90deg) translateX(-100vh);
-  transform-origin: top left;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  position: absolute;
-  margin-top: 14%;
-  height: 100vw;
-}
 
 .movies-container {
   padding: 10px;
   height: 100vh; 
-  justify-content: center;
   display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
   width: fit-content;
-  flex-direction: row;
   transform-origin: top left;
-  transform: rotate(90deg) translateY(-105vh);
-      & :hover {
-        transition: all .2s ease-in-out;
-        transform: scale(1.1)
+    & :hover {
+      transition: all .2s ease-in-out;
+      transform: scale(1.1)
     }
-    
 }

@@ -20,6 +20,7 @@ export const MovieCard = (props) => {
     // make an api call
     // check that they are logged in first
     if (props.user.id === undefined) {
+      console.log(event)
       return (
         <Redirect to='/login'>Not Logged In</Redirect>
       )}
@@ -40,16 +41,22 @@ export const MovieCard = (props) => {
   let error;
   return (
     <article id={id} className="movie-card">
-      <h1>{title}</h1>
-      <p>{movieRating}</p>
-      <p>{backgroundImage}</p>
-      <p>{overview}</p>
-      <p>{posterImage}</p>
-      <p>{releaseDate}</p>
-      {isFavorited ? 
-        <img src={favorite} alt="favorited" onClick={(event) => favoriteMovie(event, id)}/> : 
-        <img src={unfavorite} alt="un favorited" onClick={(event) => favoriteMovie(event, id)}/>}
-      {error}
+      <img
+        className='movieCard__img'
+        src={posterImage}
+        alt='Official movie poster'
+      />
+      {/* <p className="rating" >{movieRating}</p> */}
+      {/* <p className="image" >{backgroundImage}</p> */}
+      {/* <p className="overview">{overview}</p> */}
+      {/* <p className="releaseDate">{releaseDate}</p> */}
+      <div className="footer">
+        <p className="movie_title">{title}</p>
+        {isFavorited ?
+          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => favoriteMovie(event, id)} /> :
+          <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => favoriteMovie(event, id)} />}
+        {error}
+      </div>
     </article>
   )
 }
@@ -63,3 +70,4 @@ export const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+
