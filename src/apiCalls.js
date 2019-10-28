@@ -36,10 +36,10 @@ export const getFavorites = async (id) => {
 }
 
 export const setFavorites = async (id, faveObj) => {
+  console.log(faveObj)
   const options = {
     method: 'POST',
-    body: JSON.stringify(
-  ),
+    body: JSON.stringify(faveObj),
     headers: {
       'Content-Type': 'application/json'
     }
