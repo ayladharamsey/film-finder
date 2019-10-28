@@ -38,6 +38,10 @@ export const setFavorites = () => {
     
 }
 
+export const deleteFavorites = () => {
+    
+}
+
 export const loginUserCheck = async userInfo => { 
   const options = {
     method: 'POST',

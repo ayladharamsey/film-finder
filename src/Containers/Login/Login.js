@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { setUser } from '../../actions';
+import { setUser} from '../../actions';
 import { connect } from 'react-redux';
 import { user } from '../../reducers/user';
 import { Link, Redirect, NavLink } from 'react-router-dom';
