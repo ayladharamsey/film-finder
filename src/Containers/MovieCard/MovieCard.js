@@ -46,6 +46,8 @@ export class MovieCard extends Component {
     isFavorited 
     } = this.props;
 
+    const cutOverview = overview.split('').splice(0, 140)
+
     const { btnClick } = this.state
 
     let error;
@@ -62,13 +64,13 @@ export class MovieCard extends Component {
         alt='Official movie poster'
       />
       <div className="footer">
-      <p>Overview: {overview}</p>
-      <p>Release Date: {releaseDate}</p>
-      <p className="movie_title">{title}</p>
-      {isFavorited ? 
-        <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
-        <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
-      {error}
+        <p className="over-view">Overview: {cutOverview}</p>
+        <p>Release Date: {releaseDate}</p>
+        <p className="movie_title">{title}</p>
+        {isFavorited ? 
+          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
+          <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
+        {error}
       </div>
     </article>
     )
