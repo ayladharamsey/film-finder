@@ -17,9 +17,9 @@ $logo-font:'Source Sans Pro', sans-serif;
 }
 
 .movie-card {
-  margin: 0px 0px 50px 50px;
-  height: 77%;
-  width: 310px;
+  margin: 25px;
+  height: 500px;
+  width: 290px;
   box-shadow: 0px 5px 5px 0px #1a1a1a, 0px 10px 10px 0px #1a1a1a;
   border-radius: 7px;
 }
@@ -34,6 +34,6 @@ $logo-font:'Source Sans Pro', sans-serif;
 }
 
 .movieCard__img {
-  height: 85%; 
+  width: 100%; 
 }
 
