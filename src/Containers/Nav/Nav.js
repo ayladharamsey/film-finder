@@ -8,7 +8,7 @@ import { setUser } from '../../actions/index'
 export const Nav = (props) => {
   const { user } = props;
   const loginLink = <Link to='/login'><button>Login</button></Link>;
-  const logoutLink = <Link to='/'><button onClick={setUser()}>Logout</button></Link>
+  const logoutLink = <div><p className="user-name">Welcome! {user.name}</p><Link to='/'><button onClick={setUser()}>Logout</button></Link></div>
 
   return (
     <nav>
