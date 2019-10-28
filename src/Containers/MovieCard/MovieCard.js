@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './MovieCard.scss';
 import { faveMovie } from '../../actions/index'
 import favorite from '../../images/favorite.svg'
-import unfavorite from '../../images/unfavorite.svg'
+import unfavorite from '../../images/unfavorite.png'
 import { Redirect } from 'react-router-dom'; 
 
 
