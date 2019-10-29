@@ -10,7 +10,7 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Nav from '../Nav/Nav'
 import { Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, loginUserCheck } from '../../apiCalls';
-import { setMovies, faveMovie, setUser, isLoading, hasErrored } from '../../actions';
+import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
 export class App extends Component {
   
@@ -61,7 +61,7 @@ export class App extends Component {
     if (id) {
       try {
         const faves = await getFavorites(id);
-        console.log(faves)
+        this.props.setFaves(faves)
       } catch({ message })  {
         this.props.hasErrored(message);
         this.props.isLoading(false);
@@ -117,7 +117,8 @@ export const mapStateToProps = state => ({
   movieData: state.movieData,
   user: state.user,
   loading: state.loading,
-  hasErrored: state.hasErrored  
+  hasErrored: state.hasErrored,
+  favorites: state.favorites  
 })
 
 export const mapDispatchToProps = dispatch => (
@@ -127,6 +128,7 @@ export const mapDispatchToProps = dispatch => (
     setUser,
     isLoading,
     hasErrored,
+    setFaves
   }, dispatch)
 )
 
