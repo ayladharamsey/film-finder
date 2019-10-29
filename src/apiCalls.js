@@ -48,10 +48,6 @@ export const setFavorites = async (id, faveObj) => {
   
 }
 
-export const deleteFavorites = () => {
-    
-}
-
 export const loginUserCheck = async userInfo => { 
   const options = {
     method: 'POST',
