@@ -3,7 +3,10 @@
 ## by: Ayla Dharamsey, Kate Malone, Michael Schneider
 
 ### Summary:
-Film Finder is a app that gives the user the ability to browse popular movies
+Film Finder is a web-based application that allows users to log in, browse upcoming films, view popular regarding the film, and favorite the film if they are interested in watching it. If the user logs out and logs back in, their favorited films will still be available to them at any time. 
+
+### Tech Stack: 
+This application utilizes: create-react-app, react, redux, enzyme & jest, html, scss, react router, fetch API, the Movie DB API.
 
 ### Installation:
 Remember to sign up for your own account to MovieDB and enter your own api code at the top of apiCalls.js
