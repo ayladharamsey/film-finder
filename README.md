@@ -1,6 +1,9 @@
 # Film Finder
 
 ## by: Ayla Dharamsey, Kate Malone, Michael Schneider
+[Ayla Dharamsey](https://github.com/ayladharamsey), 
+[Kate Malone](https://github.com/katemalone)
+[Michael Schneider](https://github.com/mschneider247), 
 
 ### Summary:
 Film Finder is a web-based application that allows users to log in, browse upcoming films, view popular regarding the film, and favorite the film if they are interested in watching it. If the user logs out and logs back in, their favorited films will still be available to them at any time. 
