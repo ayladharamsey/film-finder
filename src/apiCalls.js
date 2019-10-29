@@ -25,8 +25,10 @@ export const getMovies = async () => {
   return await Promise.all(cleanedMovieData);
 }
 
+
+// interpolated the id 
 export const getFavorites = async (id) => {
-    const response = await fetch('/api/v1/users/1/moviefavorites');
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`);
     if(!response.ok) {
         throw new Error('There was an error getting your favorites.')
     }
@@ -47,6 +49,9 @@ export const loginUserCheck = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/login`, options)
+  if (response.status === 401) {
+    throw Error('email or password is incorrect')
+  }
   if(!response.ok) {
     throw new Error('There was an error getting your information!')
   }
@@ -55,7 +60,7 @@ export const loginUserCheck = async userInfo => {
 }
 
 export const createNewUser = async userInfo => {
-  console.log("userInfo", userInfo)
+  console.log("createUserInfo", userInfo)
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
@@ -65,6 +70,9 @@ export const createNewUser = async userInfo => {
   }
   const response = await fetch(`http://localhost:3001/api/v1/users`, options)
   console.log("response", response)
+  if (response.status === 500) {
+    throw Error('This email has already been used')
+  } 
   if (!response.ok) {
     throw new Error('There was an error getting your information!')
   }
