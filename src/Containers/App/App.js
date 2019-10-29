@@ -1,5 +1,3 @@
-/* eslint-disable import/first */
-
 import './App.scss';
 import Login from '../Login/Login';
 import { connect } from 'react-redux';
@@ -7,7 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import Nav from '../Nav/Nav'
+import Nav from '../Nav/Nav';
 import { Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, loginUserCheck } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
@@ -60,7 +58,7 @@ export class App extends Component {
   retrieveFavorites = async id => {
     if (id) {
       try {
-        const faves = await getFavorites(id);
+        let faves = await getFavorites(id);
         faves = faves.forEach(fave => {
           this.props.faveMovie(fave.movie_id)
         })
@@ -122,7 +120,7 @@ export const mapStateToProps = state => ({
   loading: state.loading,
   hasErrored: state.hasErrored,
   favorites: state.favorites  
-})
+});
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
@@ -133,7 +131,7 @@ export const mapDispatchToProps = dispatch => (
     hasErrored,
     setFaves
   }, dispatch)
-)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // 

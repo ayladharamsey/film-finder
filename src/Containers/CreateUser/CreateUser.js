@@ -3,7 +3,6 @@ import './Create.scss';
 import { setUser } from '../../actions'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { devToolsEnhancer } from 'redux-devtools-extension';
 
 export class CreateUser extends Component { 
   constructor() { 
@@ -48,25 +47,25 @@ export class CreateUser extends Component {
             </Link>
             <h2 className="input_title" >Sign Up Now!</h2>
             <input 
-            className="name"
-            name="name"
-            value={name}
-            placeholder="type your name"
-            onChange={this.updateUser}
+              className="name"
+              name="name"
+              value={name}
+              placeholder="type your name"
+              onChange={this.updateUser}
             />
             <input 
-            className="email"
-            name="email"
-            value={email}
-            placeholder="type your email"
-            onChange={this.updateUser}
+              className="email"
+              name="email"
+              value={email}
+              placeholder="type your email"
+              onChange={this.updateUser}
             />
             <input 
-            className="password"
-            name="password"
-            value={password}
-            placeholder="type your password"
-            onChange={this.updateUser}
+              className="password"
+              name="password"
+              value={password}
+              placeholder="type your password"
+              onChange={this.updateUser}
             />
             <Link to="/movies">
               <button className="button" onClick={this.handleForm}>sign up</button>
@@ -80,6 +79,6 @@ export class CreateUser extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user))
-})
+});
 
 export default connect(null, mapDispatchToProps)(CreateUser);

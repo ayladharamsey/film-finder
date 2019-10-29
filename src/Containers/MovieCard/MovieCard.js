@@ -18,7 +18,7 @@ export class MovieCard extends Component {
 
   render() {
     const favoriteMovie = (event) => {
-      const movieId = parseInt(event.target.parentNode.parentNode.id)
+      const movieId = parseInt(event.target.parentNode.parentNode.id);
       const userId = parseInt(this.props.user.id);
       this.props.faveMovie(movieId);
       this.props.setFaves(id);
@@ -49,8 +49,6 @@ export class MovieCard extends Component {
     const { 
     user,
     id, 
-    movieRating, 
-    backgroundImage, 
     overview, 
     posterImage, 
     title, 
@@ -92,11 +90,11 @@ export class MovieCard extends Component {
 export const mapDispatchToProps = (dispatch) => ({
   faveMovie: (id) => dispatch (faveMovie(id)),
   setFaves: id => dispatch(setFaves(id))
-})
+});
 
 export const mapStateToProps = state => ({
   user: state.user
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
 

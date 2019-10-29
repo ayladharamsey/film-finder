@@ -1,4 +1,3 @@
-
 const apiKey = '0f1d43bea84ed1843958538d348af0d5';
 const upcomingMovies = '/popular/';
 const imageUrl = 'https://image.tmdb.org/t/p/original';
@@ -44,15 +43,9 @@ export const setFavorites = async (id, faveObj) => {
       'Content-Type': 'application/json'
     }
   }
-  const response =  await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
-  
-}
+  await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
 
 
-
-export const deleteFavorites = () => {
-    
-}
 
 export const loginUserCheck = async userInfo => { 
   const options = {

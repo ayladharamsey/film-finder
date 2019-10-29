@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Login.scss';
 import { setUser} from '../../actions';
 import { connect } from 'react-redux';
-import { Link, Redirect, NavLink } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export class Login extends Component {
   constructor() {
@@ -51,7 +51,7 @@ export class Login extends Component {
 
   render() {
     const { email, password, buttonClick } = this.state;
-    const { hasErrored, user } = this.props;
+    const { user } = this.props;
     let error;
 
     if ((buttonClick === true)) {
