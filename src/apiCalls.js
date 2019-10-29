@@ -25,8 +25,10 @@ export const getMovies = async () => {
   return await Promise.all(cleanedMovieData);
 }
 
+
+// interpolated the id 
 export const getFavorites = async (id) => {
-    const response = await fetch('/api/v1/users/1/moviefavorites');
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`);
     if(!response.ok) {
         throw new Error('There was an error getting your favorites.')
     }
