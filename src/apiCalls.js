@@ -61,6 +61,9 @@ export const loginUserCheck = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/login`, options)
+  if (response.status === 401) {
+    throw Error('email or password is incorrect')
+  }
   if(!response.ok) {
     throw new Error('There was an error getting your information!')
   }
@@ -69,6 +72,10 @@ export const loginUserCheck = async userInfo => {
 }
 
 export const createNewUser = async userInfo => {
+<<<<<<< HEAD
+=======
+  console.log("createUserInfo", userInfo)
+>>>>>>> 4b0fd63e25399549b9065c2951dceaa517014d1b
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
@@ -77,6 +84,13 @@ export const createNewUser = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/users`, options)
+<<<<<<< HEAD
+=======
+  console.log("response", response)
+  if (response.status === 500) {
+    throw Error('This email has already been used')
+  } 
+>>>>>>> 4b0fd63e25399549b9065c2951dceaa517014d1b
   if (!response.ok) {
     throw new Error('There was an error getting your information!')
   }
