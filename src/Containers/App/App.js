@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Nav from '../Nav/Nav'
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, loginUserCheck } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
 
@@ -19,7 +19,7 @@ export class App extends Component {
       this.props.isLoading(true);
       const films = await getMovies();
       this.props.setMovies(films);
-      this.props.isLoading(false); 
+      this.props.isLoading(false);
     } catch({ message }) {
       this.props.hasErrored(message);
       this.props.isLoading(false);
@@ -42,8 +42,6 @@ export class App extends Component {
     }
 
     loginUser = async user => {
-      console.log("this is loginUser in App firing")
-      console.log("user", user)
       try {
        const response = await loginUserCheck(user);
        if(response.id) {
@@ -52,7 +50,7 @@ export class App extends Component {
            id: response.id
          })
        }
-
+       this.retrieveFavorites(response.id)
       }
       catch({message}){
       this.props.hasErrored(message);
@@ -60,19 +58,19 @@ export class App extends Component {
     }
     
   retrieveFavorites = async id => {
-    try {
-      this.props.isLoading(true);
-      const faves = await getFavorites(id);
-      this.props.isLoading(false);
-      this.props.setFaves(faves);
-    } catch(error) {
-      this.props.isLoading(false);
-      this.props.hasErrored(error.message);
+    if (id) {
+      try {
+        const faves = await getFavorites(id);
+        this.props.setFaves(faves);
+      } catch({ message })  {
+        this.props.hasErrored(message);
+        this.props.isLoading(false);
+      }
     }
   }
    
   render() {
-    const { movieData, setUser } = this.props;
+    const { movieData } = this.props;
     return (
         <Switch>
           <main>
@@ -84,7 +82,7 @@ export class App extends Component {
             <Route 
             exact 
             path="/login"
-            render = {() => <Login loginUser={this.loginUser} />}
+            render = {() => <Login loginUser={this.loginUser} retrieveFavorites={this.retrieveFavorites} />}
             />
             <Route 
             exact 
@@ -98,10 +96,6 @@ export class App extends Component {
                 )
             }}/>
             <Route 
-            path="/favorites"
-            render = {() => <MoviesContainer movieData={movieData.filter(movie => movie.isFavorited)}/>}
-            />
-            <Route 
             exact 
             path="/movies"
             render = {() => {
@@ -112,17 +106,6 @@ export class App extends Component {
                 </>
                 )
             }} 
-            />
-            <Route 
-            exact 
-            path="/movies/:id"
-            render = {({ match }) => {
-              const { id } = match.params;
-              const numberId = parseInt(id); 
-              // return (
-              //   //add the movieInfo component here 
-              // )
-            }}
             />
           </main>
         </Switch>
@@ -143,7 +126,8 @@ export const mapDispatchToProps = dispatch => (
     faveMovie,
     setUser,
     isLoading,
-    hasErrored
+    hasErrored,
+    setFaves
   }, dispatch)
 )
 

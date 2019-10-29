@@ -3,6 +3,11 @@ export const setMovies = movies => ({
   movies
 })
 
+export const setFaves = faves => ({
+  type: 'SET_FAVES',
+  faves
+});
+
 export const faveMovie = id => ({
   type: 'FAVE_MOVIE',
   id
