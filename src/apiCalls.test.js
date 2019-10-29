@@ -18,11 +18,12 @@ describe('getMovies', () => {
     "release_date": "2019-10-18"
   }]
 
+
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
-        json: () => Promise.resolve(mockMovies)
+        json: () => Promise.resolve({ results: mockMovies })
       })
     })
   });
