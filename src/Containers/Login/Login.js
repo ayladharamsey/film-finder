@@ -51,7 +51,7 @@ export class Login extends Component {
 
   render() {
     const { email, password, buttonClick } = this.state;
-    const { hasErrored, user } = this.props;
+    const { user } = this.props;
     let error;
 
     if ((buttonClick === true)) {
