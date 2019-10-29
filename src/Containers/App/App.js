@@ -61,7 +61,10 @@ export class App extends Component {
     if (id) {
       try {
         const faves = await getFavorites(id);
-        this.props.setFaves(faves);
+        faves = faves.forEach(fave => {
+          this.props.faveMovie(fave.movie_id)
+        })
+        this.props.setFaves(faves)
       } catch({ message })  {
         this.props.hasErrored(message);
         this.props.isLoading(false);
@@ -82,7 +85,7 @@ export class App extends Component {
             <Route 
             exact 
             path="/login"
-            render = {() => <Login loginUser={this.loginUser} retrieveFavorites={this.retrieveFavorites} />}
+            render = {() => <Login loginUser={this.loginUser} />}
             />
             <Route 
             exact 
@@ -117,7 +120,8 @@ export const mapStateToProps = state => ({
   movieData: state.movieData,
   user: state.user,
   loading: state.loading,
-  hasErrored: state.hasErrored  
+  hasErrored: state.hasErrored,
+  favorites: state.favorites  
 })
 
 export const mapDispatchToProps = dispatch => (
