@@ -56,7 +56,7 @@ export class MovieCard extends Component {
     isFavorited 
     } = this.props;
 
-    const cutOverview = overview.split('').splice(0, 140)
+    const cutOverview = overview.split('').splice(0, 148).concat(' ...')
 
     const { btnClick } = this.state
 
