@@ -61,7 +61,7 @@ export class App extends Component {
     if (id) {
       try {
         const faves = await getFavorites(id);
-        console.log('faves', faves)
+        console.log(faves)
         this.props.setFaves(faves);
       } catch({ message })  {
         this.props.hasErrored(message);

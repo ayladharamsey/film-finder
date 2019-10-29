@@ -32,7 +32,7 @@ export const getFavorites = async (id) => {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    return favorites;
+    return favorites.favorites.map(favorite => ({...favorite, isFavorited: true}));
 }
 
 export const setFavorites = async (id, faveObj) => {
