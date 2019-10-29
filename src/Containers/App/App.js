@@ -58,7 +58,7 @@ export class App extends Component {
   retrieveFavorites = async id => {
     if (id) {
       try {
-        const faves = await getFavorites(id);
+        let faves = await getFavorites(id);
         faves = faves.forEach(fave => {
           this.props.faveMovie(fave.movie_id)
         })
