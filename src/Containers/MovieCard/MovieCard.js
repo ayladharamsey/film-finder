@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './MovieCard.scss';
-import { faveMovie } from '../../actions/index'
+import { faveMovie, setFaves  } from '../../actions/index'
 import favorite from '../../images/favorite.svg'
 import unfavorite from '../../images/unfavorite.png'
 import { Redirect } from 'react-router-dom'; 
+import { setFavorites } from '../../apiCalls'
 
 
 export class MovieCard extends Component {
@@ -16,8 +17,19 @@ export class MovieCard extends Component {
   }
 
   render() {
-    const favoriteMovie = (event, id) => {
-      this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id))
+    const favoriteMovie = (event) => {
+      const movieId = parseInt(event.target.parentNode.parentNode.id)
+      const userId = parseInt(this.props.user.id);
+      this.props.faveMovie(movieId);
+      this.props.setFaves(id);
+      setFavorites(userId, {
+        "movie_id": movieId,
+        "title": "sample",
+        "poster_path": "example",
+        "release_date": "2019-10-18",
+        "vote_average": "5.8",
+        "overview": "once upon a time"
+      });
     }
   
     const checkLogginStatus = () => {
@@ -31,7 +43,7 @@ export class MovieCard extends Component {
 
     const handleClick = (event, id) => {
       this.setState({btnClick: true})
-      favoriteMovie(event, id) 
+      favoriteMovie(event, id);
     }
 
     const { 
@@ -68,7 +80,7 @@ export class MovieCard extends Component {
         <p>Release Date: {releaseDate}</p>
         <p className="movie_title">{title}</p>
         {isFavorited ? 
-          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event, id)}/> : 
+          <img className="fave_btn-img" src={favorite} alt="favorited" onClick={(event) => handleClick(event)}/> : 
           <img className="fave_btn-img" src={unfavorite} alt="un favorited" onClick={(event) => handleClick(event, id)}/>}
         {error}
       </div>
@@ -78,7 +90,8 @@ export class MovieCard extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  faveMovie: (id) => dispatch (faveMovie(id))
+  faveMovie: (id) => dispatch (faveMovie(id)),
+  setFaves: id => dispatch(setFaves(id))
 })
 
 export const mapStateToProps = state => ({

@@ -1,3 +1,4 @@
+
 const apiKey = '0f1d43bea84ed1843958538d348af0d5';
 const upcomingMovies = '/popular/';
 const imageUrl = 'https://image.tmdb.org/t/p/original';
@@ -10,7 +11,7 @@ export const getMovies = async () => {
   }
   const movies = await response.json();
   const cleanedMovieData = await movies.results.map(async (result) => {
-    const { id, adult, backdrop_path, overview, poster_path, title, release_date } = result;
+    const { id, adult, backdrop_path, overview, poster_path, title, release_date, vote_average } = result;
     return {
         id: id,
         movieRating: adult,
@@ -19,24 +20,35 @@ export const getMovies = async () => {
         posterImage: `${imageUrl}${poster_path}`,
         title: title,
         releaseDate: release_date,
-        isFavorited: false
+        isFavorited: false,
+        voteAverage: vote_average
     }
   })
   return await Promise.all(cleanedMovieData);
 }
 
-
-// interpolated the id 
 export const getFavorites = async (id) => {
-  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`);
+    const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`);
     if(!response.ok) {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    return favorites;
+    return favorites.favorites
 }
 
-export const setFavorites = () => {
+export const setFavorites = async (id, faveObj) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(faveObj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const response =  await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
+  
+}
+
+export const deleteFavorites = () => {
     
 }
 
@@ -60,7 +72,6 @@ export const loginUserCheck = async userInfo => {
 }
 
 export const createNewUser = async userInfo => {
-  console.log("createUserInfo", userInfo)
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
@@ -69,7 +80,6 @@ export const createNewUser = async userInfo => {
     }
   }
   const response = await fetch(`http://localhost:3001/api/v1/users`, options)
-  console.log("response", response)
   if (response.status === 500) {
     throw Error('This email has already been used')
   } 
@@ -79,5 +89,3 @@ export const createNewUser = async userInfo => {
   const data = await response.json();
   return data
 }
-
-
