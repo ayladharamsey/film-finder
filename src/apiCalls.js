@@ -45,7 +45,7 @@ export const setFavorites = async (id, faveObj) => {
   }
   await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
 
-
+}
 
 export const loginUserCheck = async userInfo => { 
   const options = {
