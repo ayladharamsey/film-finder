@@ -10,12 +10,12 @@
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
-  margin-top: 14%;
   height: 100vw;
   background-color:black;
 }
 
 .movies-container {
+  margin-top: 100px;
   padding: 2%;
   height: 100vh; 
   display:flex;
