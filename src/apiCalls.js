@@ -43,10 +43,8 @@ export const setFavorites = async (id, faveObj) => {
       'Content-Type': 'application/json'
     }
   }
-  const response =  await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
-  if(!response.ok) {
-    throw new Error('There was an error setting your favorites.')
-  }
+  await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
+
 }
 
 export const loginUserCheck = async userInfo => { 
