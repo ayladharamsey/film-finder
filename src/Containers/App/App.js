@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import CreateUser from '../CreateUser/CreateUser';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import Nav from '../Nav/Nav'
+import Nav from '../Nav/Nav';
 import { Switch, Route} from 'react-router-dom';
 import { getMovies, createNewUser, getFavorites, loginUserCheck } from '../../apiCalls';
 import { setMovies, faveMovie, setUser, isLoading, hasErrored, setFaves } from '../../actions';
@@ -120,7 +120,7 @@ export const mapStateToProps = state => ({
   loading: state.loading,
   hasErrored: state.hasErrored,
   favorites: state.favorites  
-})
+});
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
@@ -131,6 +131,6 @@ export const mapDispatchToProps = dispatch => (
     hasErrored,
     setFaves
   }, dispatch)
-)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
