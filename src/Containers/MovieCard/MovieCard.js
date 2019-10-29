@@ -19,13 +19,15 @@ export class MovieCard extends Component {
   render() {
     const favoriteMovie = (event) => {
       this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id));
-      getFavorites(this.props.user.id)
-      setFavorites(this.props.user.id, {
-        "movie_id": `${event.target.parentNode.parentNode.id}`,
+      // getFavorites(this.props.user.id)
+      const movieId = parseInt(event.target.parentNode.parentNode.id)
+      const userId = parseInt(this.props.user.id);
+      setFavorites(userId, {
+        "movie_id": movieId,
         "title": "sample",
         "poster_path": "example",
         "release_date": "2019-10-18",
-        "vote_average": 5.8,
+        "vote_average": "5.8",
         "overview": "once upon a time"
       } );
     }

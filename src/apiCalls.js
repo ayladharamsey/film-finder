@@ -45,7 +45,7 @@ export const setFavorites = async (id, faveObj) => {
     }
   }
   const response =  await fetch(`http://localhost:3001/api/v1/users/${id}/movieFavorites`, options)
-    
+  
 }
 
 export const deleteFavorites = () => {
