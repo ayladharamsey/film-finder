@@ -19,7 +19,7 @@ export class MovieCard extends Component {
   render() {
     const favoriteMovie = (event) => {
       this.props.faveMovie(parseInt(event.target.parentNode.parentNode.id));
-      getFavorites(this.props.user.id)
+      // getFavorites(this.props.user.id)
       setFavorites(this.props.user.id, {
         "movie_id": `${event.target.parentNode.parentNode.id}`,
         "title": "sample",
