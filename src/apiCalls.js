@@ -1,4 +1,3 @@
-
 const apiKey = '0f1d43bea84ed1843958538d348af0d5';
 const upcomingMovies = '/popular/';
 const imageUrl = 'https://image.tmdb.org/t/p/original';
