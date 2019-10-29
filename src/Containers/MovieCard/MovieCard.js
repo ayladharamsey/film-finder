@@ -21,7 +21,7 @@ export class MovieCard extends Component {
       const movieId = parseInt(event.target.parentNode.parentNode.id)
       const userId = parseInt(this.props.user.id);
       this.props.faveMovie(movieId);
-      this.props.setFaves(id)
+      this.props.setFaves(id);
       setFavorites(userId, {
         "movie_id": movieId,
         "title": "sample",
@@ -43,7 +43,7 @@ export class MovieCard extends Component {
 
     const handleClick = (event, id) => {
       this.setState({btnClick: true})
-      favoriteMovie(event, id) 
+      favoriteMovie(event, id);
     }
 
     const { 

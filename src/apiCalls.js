@@ -1,3 +1,4 @@
+
 const apiKey = '0f1d43bea84ed1843958538d348af0d5';
 const upcomingMovies = '/popular/';
 const imageUrl = 'https://image.tmdb.org/t/p/original';
@@ -32,7 +33,7 @@ export const getFavorites = async (id) => {
         throw new Error('There was an error getting your favorites.')
     }
     const favorites = await response.json();
-    return favorites.favorites.map(favorite => ({...favorite, isFavorited: true}));
+    return favorites.favorites
 }
 
 export const setFavorites = async (id, faveObj) => {
