@@ -14,5 +14,13 @@ describe('movie Data Reducer', () => {
     expect(result).toEqual(mockMovieData)
   });
 
-  it ('')
+  it ('Should favorite a movie when passed its id', () => {
+    const mockMovieData = [{id: 4, title: "A Movie", isFavorited: false}];
+    const mockSetMovies = {type: 'SET_MOVIES', movies: mockMovieData};
+    const mockState = movieData([], mockSetMovies)
+    const mockAction = {type: "FAVE_MOVIE", id: 4};
+    const result = movieData(mockState, mockAction)
+    expect(result).toEqual([{id: 4, title: "A Movie", isFavorited: true}]);
+  })
 });
+
