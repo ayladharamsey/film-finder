@@ -27,8 +27,10 @@ describe('movie Data Reducer', () => {
 
 describe('errorMsg reducer', () => {
 
-  it('should return an intial state of empty strink', () => {
-    
+  it('should return an intial state of empty string', () => {
+    const expected = '';
+    const result = hasErrored(undefined, {});
+    expect(result).toEqual(expected);
   })
 
   it('should return error message when case is HAS_ERRORED', () => {
