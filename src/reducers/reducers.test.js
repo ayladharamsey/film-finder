@@ -1,4 +1,5 @@
 import { movieData } from './movieData';
+import { hasErrored } from './errorMsg';
 
 describe('movie Data Reducer', () => {
   it('Should return the initial state', () => {
@@ -23,4 +24,17 @@ describe('movie Data Reducer', () => {
     expect(result).toEqual([{id: 4, title: "A Movie", isFavorited: true}]);
   })
 });
+
+describe('errorMsg reducer', () => {
+
+  it('should return an intial state of empty strink', () => {
+    
+  })
+
+  it('should return error message when case is HAS_ERRORED', () => {
+    const mockErrorAction = {type: 'HAS_ERRORED', error: 'Error Message'}
+    const result = hasErrored('', mockErrorAction)
+    expect(result).toEqual('Error Message')
+  })
+})
 
