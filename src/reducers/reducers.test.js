@@ -49,12 +49,12 @@ describe('loading reducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should change the loading bool from false to true when case is IS_LOADING', () => {
+  it('should return true or false when case is IS_LOADING', () => {
     const mockLoadingAction = {
       type: 'IS_LOADING',
       bool: false
     }
-    const result = loading(true, mockLoadingAction);
+    const result = loading(undefined, mockLoadingAction);
     expect(result).toEqual(false);
   });
 });
